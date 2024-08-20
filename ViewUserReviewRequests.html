@@ -71,6 +71,23 @@
 		</main>
 	</div>
 	    <#INCLUDE filename="include_footer.html">
+<script>
+    $(document).ready(function () {
+        var $submitButtons = $('#submitInformation, #submitCancelRequests');
+        var $checkboxes = $('input[name="TransactionSelect"]');
+
+        function toggleSubmitButton() {
+            if ($checkboxes.is(':checked')) {
+                $submitButtons.prop('disabled', false);
+            } else {
+                $submitButtons.prop('disabled', true);
+            }
+        }
+
+        $checkboxes.change(toggleSubmitButton);
+        toggleSubmitButton(); // Initial check
+    });
+</script>
 </body>
 
 </html>
