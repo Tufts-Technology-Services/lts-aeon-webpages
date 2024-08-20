@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>TASCR - Update User Information</title>
+    <#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+    <#INCLUDE filename="include_header.html">
+    <#INCLUDE filename="include_nav.html">
+		<div class="container">
+          <main id="content" aria-label="Content">
+            <form action="aeon.dll" method="post" name="ExpiredUsers">
+                <input type="hidden" name="AeonForm" value="ExpiredUsers">
+                <input type="hidden" name="NotificationMethod" value="Email">
+                <#FORMSTATE>
+
+                    <h2>Update Your Information</h2>
+                    
+                    <div id="statusLine"><#STATUS></div>
+
+                    <div class="mt-3 mb-3">
+                        Your account has expired. Accounts expire once per year. Please confirm or update your information below and click the 'Submit Information' button to continue.
+                    </div>
+                    
+                    <section name="user-info">
+                        
+                        <h3 class="section-header">Your Information</h3>
+
+                        <div class="form-group col-md-5">
+                            <label for="FirstName">
+                                <span class="<#ERROR name='ERRORFirstName'>">
+                                    First Name
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="FirstName" id="FirstName" value="<#PARAM name='FirstName'>" required>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="LastName">
+                                <span class="<#ERROR name='ERRORLastName'>">
+                                    Last Name
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="LastName" id="LastName" value="<#PARAM name='LastName'>" required>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="EMailAddress">
+                                <span class="<#ERROR name='ERROREMailAddress'>">
+                                    Email Address
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="email" class="form-control" name="EMailAddress" id="EMailAddress" value="<#PARAM name='EMailAddress'>" autocomplete="off" required>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="Phone">
+                                <span class="<#ERROR name='ERRORPhone'>">
+                                    Phone
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="Phone" id="Phone" value="<#PARAM name='Phone'>" required>
+                        </div>
+						
+                        <h3 class="section-header">Address Information</h3>
+
+                        <div class="form-group col-md-5">
+                            <label for="Address">
+                                <span class="<#ERROR name='ERRORAddress'>">
+                                    Address Line 1
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="Address" id="Address" value="<#PARAM name='Address'>" required>
+                        </div>
+						
+                        <div class="form-group col-md-5">
+                            <label for="Address2">
+                                <span class="<#ERROR name='ERRORAddress2'>">
+                                    Address Line 2
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="Address2" id="Address2" value="<#PARAM name='Address2'>">
+                        </div>
+						
+                        <div class="form-group col-md-5">
+                            <label for="City">
+                                <span class="<#ERROR name='ERRORCity'>">
+                                    City
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="City" id="City" value="<#PARAM name='City'>" required>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="State">
+                                <span class="<#ERROR name='ERRORState'>">
+                                    State
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="State" id="State" required>
+                                <#OPTION name="States" selectedValue="<#PARAM name='State'>" defaultName="Choose a State" defaultValue="">
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="Zip">
+                                <span class="<#ERROR name='ERRORZip'>">
+                                    Zip
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="Zip" id="Zip" value="<#PARAM name='Zip'>" required>
+                        </div>
+						
+                        <div class="form-group col-md-4">
+                            <label for="Country">
+                                <span class="<#ERROR name='ERRORCountry'>">
+                                    Country
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="Country" id="Country" required>
+                                <#OPTION name="Countries" selectedValue="<#PARAM name='Country'>" defaultName="Choose a Country" defaultValue="">
+                            </select>
+                        </div>
+                    </section>
+					
+					<section name="status-info">
+					
+                        <h3 class="section-header">Your Affiliation</h3>
+
+
+                        <div class="form-group col-md-5">
+                            <label for="Status">
+                                <span class="<#ERROR name='ERRORStatus'>">
+                                    Status
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="Status" id="Status" required>
+                                <#OPTION name="Statuses" selectedValue="<#PARAM name='Status'>" defaultName="Choose a Status" defaultValue="">
+                            </select>
+                        </div>
+						
+                        <div class="form-group col-md-5">
+                            <label for="Organization">
+                                <span class="<#ERROR name='ERROROrganization'>">
+                                    Organization
+									<span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="Organization" id="Organization" value="<#PARAM name='Organization'>">
+                        	<div class="small-notes">
+								(e.g., SUNY Potsdam, Boston University) 
+								<br />
+								If you do not have an Institutional Affiliation, please enter "none."
+							</div>
+						</div>
+						
+                        <div class="form-group col-md-5">
+                            <label for="Department">
+                                <span class="<#ERROR name='ERRORDepartment'>">
+                                    Department
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="Department" id="Department">
+                                <#OPTION name="Departments" selectedValue="<#PARAM name='Department'>" defaultName="Choose a Department" defaultValue="">
+                            </select>
+                        </div>
+						
+                        <div class="form-group col-md-5">
+                            <label for="AltIDType">
+                                <span class="<#ERROR name='ERRORAltIDType'>">
+                                    Tufts Alumni
+                                    <span class="req">(required)</span>
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="AltIDType" id="AltIDTypeOption">
+                                <#OPTION name="AltIDTypes" selectedValue="<#PARAM name='AltIDType'>" defaultName="Choose Yes or No" defaultValue="">
+                            </select>
+						</div>
+						
+						<div id="alumni">
+							<div class="form-group col-md-5">
+								<label for="UserInfo1">
+									<span class="<#ERROR name='ERRORUserInfo1'>">
+										Class Year
+									</span>
+								</label>
+							    <input id="UserInfo1" type="text" class="form-control" name="UserInfo1" value="<#PARAM name='UserInfo1'>">
+                                <div class="small-notes">
+									If you are an alum, please enter your class year. (e.g. 1967)
+								</div>
+							</div>
+							
+							<div class="form-group col-md-5">
+								<label for="UserInfo2">
+									<span class="<#ERROR name='ERRORUserInfo2'>">
+										Degree/School
+									</span>
+								</label>
+							    <input id="UserInfo2" type="text" class="form-control" name="UserInfo2" value="<#PARAM name='UserInfo2'>">
+                                <div class="small-notes">
+									If you are an alum, please enter your degree/school.
+								</div>
+							</div>
+						</div>
+                    </section>
+				
+					<!--
+                    <section name="alt-address-info" style="<#CONDITIONAL type='CustomizationKey' test='UseSecondaryAddress' false='display:none'>">
+                        <h3 class="section-header">Alternate Address Information</h3>
+
+                        <div class="form-group col-md-6">
+                            <label for="SAddress">
+                                <span class="<#ERROR name='ERRORSAddress'>">
+                                    Alternate Address Line 1
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="SAddress" id="SAddress" value="<#PARAM name='SAddress'>">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="SAddress2">
+                                <span class="<#ERROR name='ERRORSAddress2'>">
+                                    Alternate Address Line 2
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="SAddress2" id="SAddress2" value="<#PARAM name='SAddress2'>">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="SCity">
+                                <span class="<#ERROR name='ERRORSCity'>">
+                                    Alternate Address City
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="SCity" id="SCity" value="<#PARAM name='SCity'>">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="SState">
+                                <span class="<#ERROR name='ERRORSState'>">
+                                    Alternate Address State
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="SState" id="SState">
+                                <#OPTION name="States" selectedValue="<#PARAM name='SState'>" defaultName="Choose a State" defaultValue="">
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="SZip">
+                                <span class="<#ERROR name='ERRORSZip'>">
+                                    Alternate Address Zip
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="SZip" id="SZip" value="<#PARAM name='SZip'>">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label for="SCountry">
+                                <span class="<#ERROR name='ERRORSCountry'>">
+                                    Alternate Address Country
+                                </span>
+                            </label>
+                            <select class="custom-select mr-sm-2" name="SCountry" id="SCountry">
+                                <#OPTION name="Countries" selectedValue="<#PARAM name='SCountry'>" defaultName="Choose a Country" defaultValue="">
+                            </select>
+                        </div>
+
+                    </section>
+					-->
+
+                    <section name="research-info">
+                        <h3 class="section-header">Research Information</h3>
+                        
+                        <div class="form-group col-md-5">
+                            <label for="ResearchTopics">
+                                <span class="<#ERROR name='ERRORResearchTopics'>">
+                                    Research Topics
+                                </span>
+                            </label>
+                            <textarea class="form-control" name="ResearchTopics" id="ResearchTopics" rows="2" cols="40"><#PARAM name="ResearchTopics"></textarea>
+                        </div>
+                        
+                        <div class="form-check ml-3">
+                            <label class="form-check-label <#ERROR name='ERRORResearchTopicsSharing'>" for="ResearchTopicsSharing">
+                                    <input class="form-check-input" type="checkbox" id="ResearchTopicsSharing" name="ResearchTopicsSharing" value="Yes" <#CHECKED name="ResearchTopicsSharing" default="true">>Share Research Topics?
+                            </label>
+                        </div>
+                    </section>
+
+                    <section name="policies">
+           <div class="info-block">
+                <h2>First Time Users</h2>
+
+				<p>To create an account and request materials, please review the information below. By clicking the "Accept Terms and Conditions" button, 
+				you confirm that you have read and understood these policies, and agree to abide by their terms and conditions. Please pay particular attention 
+				to the copyright statement and access restrictions related to specific collections.</p>
+			
+				
+				<h2>Accessing Material at Tufts Archival Research Center</h2>
+				<p>I understand that I am given access to the archival collections at Tufts Archival Research Center subject to the conditions and policies listed below.</p>
+				<ul>
+					<li>View our complete <a href="https://dca.tufts.edu/research/policies-fees/general-policy-on-access">Access Policy</a>.</li>
+					<li>View our complete <a href="https://dca.tufts.edu/research/policies-fees/reading-room-policy">Reading Room Policy</a>.</li>
+					<li>View our <a href="https://dca.tufts.edu/research/policies-fees/personal-cameras-and-selfservice-scanning">Camera Use Policy</a>.</li>
+				</ul>
+
+				
+				<h2>Requesting Copies</h2>
+				<p>Under certain conditions specified in the United States copyright law, libraries and archives are authorized to furnish reproductions of documents and publications. 
+				One of the specified conditions is that the reproductions are not to be "used for any purpose other than private non-commercial study, scholarship, or research."
+				I understand that if I make a request for, or later use, a reproduction for purposes in excess of "fair use," I may be liable for copyright infringement.</p>
+				
+				<p>I also understand that the TARC reserves the right to refuse to fulfill a copying order, if, in its judgment, fulfillment of the order would involve (1) violation of copyright law, or (2) damage to the material.</p>
+
+				<p>View our complete <a href="https://dca.tufts.edu/research/policies-fees/reproductions-and-use">Duplication Procedure and Fee Schedule</a>.</p>
+				
+				<p>TARC welcomes you to use materials in our collections that are in the public domain and to make fair use of copyrighted materials as defined by copyright law. 
+				<a href="https://dca.tufts.edu/research/help-with-citations">Please cite us</a>.</p>
+
+				<p>Materials held by TARC may be protected by United States Copyright Law and/or by the copyright laws of other countries. Copyright law protects unpublished as well 
+				as published materials. TARC does not claim to control the rights for reproduction for all materials or images in its collections. Certain images or materials may be 
+				protected by copyright, trademark, privacy, publicity rights, or other interests not owned by Tufts University. If Tufts University does not clearly hold the copyright 
+				to an item, TARC cannot grant or deny permission to use that material. In obtaining a reproduction from TARC, you assume all responsibility for determining whether any 
+				permissions relating to copyright, privacy, publicity, trademark, or any other rights are necessary for your intended use, and for obtaining all required permissions.</p>
+				
+				<p>Written permission from the copyright holders and/or other rights holders is required for publication, distribution, or other use of protected items beyond that allowed by fair use.</p>
+				
+				<p>TARC will not do research concerning the existence and/or whereabouts of rights holders. To the extent that we provide available information, TARC does not warranty the accuracy of 
+				such information and shall not be responsible for any inaccurate information. TARC will not facilitate or execute requests for permission.</p>
+
+				<p><a href="http://www2.archivists.org/publications/brochures/copyright-and-unpublished-material">The Society of American Archivists provides further guidance about using copyrighted and unpublished materials</a>. 
+				The U.S. Copyright Office provides information about <a href="http://www.copyright.gov/circs/circ22.pdf">How to Investigate the Copyright Status of a Work</a>. When you cannot identify 
+				or locate the current copyright owner of a copyrighted work, the copyrighted material is sometimes called an "<a href="http://www.copyright.gov/orphan/">orphan work</a>." <a href="http://copyright.columbia.edu/copyright/permissions/if-you-cannot-find-the-owner/">Columbia University Libraries</a> 
+				and the <a href="http://www2.archivists.org/sites/all/files/OrphanWorks-June2009.pdf">Society of American Archivists</a> also provide advice about documenting searches for copyright owners and using orphan works.</p>
+
+				<p>When you use material, you must properly acknowledge TARC as the source of the material.</p>
+				
+				<p>You also must not use the name of TARC or Tufts University in any manner which creates any false association between you and the image, materials, TARC or Tufts University, or that incorrectly 
+				implies any sponsorship or endorsement by TARC, Tufts University, or any third-party rights holder.</p>
+
+				<p>We appreciate receiving a copy of any published work that features our material.</p>
+
+				<p>If you have any more information about an item you've seen on our website or if you are the copyright owner and believe our website has not properly attributed your work to you or has used it without 
+				permission, we want to hear from you. Please contact <a href="mailto:archives@tufts.edu">archives@tufts.edu</a> with your contact information and a link to the relevant content.</p>
+				
+				<h2 class="bold">I have read, understand, and will abide by the terms of this agreement.</h2>
+			</div>
+			</section>
+                    
+                    <button class="btn btn-primary btn-md" type="submit" name="SubmitButton" value="Submit Information">Submit Information</button>
+                    <button class="btn btn-secondary btn-md" type="submit" name="SubmitButton" value="Cancel" formnovalidate>Cancel</button>
+                </form>
+				</main>
+            </div>
+	  <#INCLUDE filename="include_footer.html">
+	  			<script src="js/jquery.maskedinput.min.js"></script>
+
+	<script>
+	jQuery(function($){
+	   $("#UserInfo1").mask("9999");
+	});
+	
+	$(document).ready(function () {
+		toggleFields(); //call this first so we start out with the correct visibility depending on the selected form values
+		
+		//this will call our toggleFields function every time the selection value of our underAge field changes
+		$("#AltIDTypeOption").change(function () {
+			toggleFields();
+		});
+
+	});
+
+		//this toggles the visibility of our parent permission fields depending on the current selected value of the underAge field
+	function toggleFields() {
+		if ($("#AltIDTypeOption").val() == 'Yes')
+			$("#alumni").show();
+		else
+			$("#alumni").hide();
+	}
+	</script>
+</body>
+</html>

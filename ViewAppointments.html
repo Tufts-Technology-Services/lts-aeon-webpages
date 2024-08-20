@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<title>TASCR - Appointments</title>
+<#INCLUDE filename="include_head.html">
+</head>
+<body>
+
+<#INCLUDE filename="include_header.html">
+
+<#INCLUDE filename="include_menu.html">
+<div class="container">
+  <main id="content" aria-label="Content"> 
+    <h2>Make a New Appointment</h2>
+
+    <#INCLUDE filename="include_appointment_scripts.html">
+
+    <div class="row">
+      <div class="form-group col-md-8 appointments-enabled">
+        <div class="input-group">
+          <button id="ScheduleNewAppointment" class="btn btn-primary btn-primary-append mx-w-100" type="button" data-toggle="collapse" data-target="#newAppointmentCollapse" aria-expanded="false" aria-controls="newAppointmentCollapse">
+           <span class="fa fa-calendar" aria-hidden="true"></span> New Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="collapse mb-3" id="newAppointmentCollapse" role="group" aria-labelledby="ScheduleNewAppointment">
+      <div class="card card-body control-group px-2">
+        <div class="container px-0">
+          <div id="appointment-info-div">
+            <div class="form-group col-md-5 <#PARAM name='RequestLinksVisible' enabled='RequestForEnabled' disabled='d-none'>">
+              <label for="RequestLink">
+                <span class="<#ERROR name='ERRORRequestLink'>">Request for</span>
+              </label>
+              <select class="custom-select mr-sm-2" id="RequestLink" name="RequestLink" size="1">
+                <#OPTION name="RequestLinks" hideUsernames="true" hideActivities="true">
+              </select>
+            </div>
+
+			<!--This field does not display d-none -->
+			<div class="form-group col-md-5 sites-enabled d-none">
+			  <label for="Site">
+			    <span class="field"><span class="<#ERROR name='ERRORSite'>">Site</span></span>
+			    <select class="custom-select mr-sm-2" id="Site" name="Site" size="1">
+			      <#OPTION name="Sites" selectedValue="TARC" defaultName="Choose a Site" defaultValue="">
+			    </select>
+			  </label>
+			</div>
+
+<div class="form-group col-md-5 appointments-enabled d-none">
+<label for="ReadingRoomID">
+<span class="<#ERROR name='ERRORReadingRoomID'>">
+Reading Room
+</span>
+<span class="req">(required)</span>
+</label>
+<select class="custom-select mr-sm-2" id="ReadingRoomID" name="ReadingRoomID" data-persisted-value="<#PARAM name='ReadingRoomID'>" size="1" required></select>
+</div>
+
+<div class="row">
+
+<div class="col">
+<div class="form-group col-md-8">
+<label for="AppointmentDate">
+<span class="<#ERROR name='ERRORAppointmentDate'>">
+Appointment Date
+</span>
+<span class="req">(required)</span>
+</label>
+<div class="input-group">
+<input class="form-control" id="AppointmentDate" name="AppointmentDate" aria-describedby="calendarNote" aria-required="true" type="text" value="<#PARAM name='AppointmentDate'>" disabled>
+</div>
+<span id="calendarNote" class="sr-only">A calendar is available below.</span>
+</div>
+<div id="datePickerContainer" class="form-group col-md-8"></div>
+</div>
+
+<div class="col">
+
+<div class="form-group col-md-8">
+<label for="AppointmentLength">
+<span class="field">
+<span class="<#ERROR name='ERRORAppointmentLength'>">Length of Appointment</span>
+</span>
+<span class="req">(required)</span>
+</label>
+<select class="custom-select mr-sm-2" id="AppointmentLength" name="AppointmentLength" aria-required="true" size="1" disabled>
+</select>
+<div class="small-notes">Make your best estimate. You do not need to use the full amount of time and may add more time within operating hours if needed.</div>
+</div>
+
+<div class="form-group col-md-8">
+<label for="AppointmentTime">
+<span class="field">
+<span class="<#ERROR name='ERRORAppointmentTime'>">Appointment Time</span>
+</span>
+<span class="req">(required)</span>
+</label>
+<select class="custom-select mr-sm-2" id="AppointmentTime" name="AppointmentTime" aria-required="true" size="1" disabled>
+</select>
+</div>
+
+<div class="form-group col-md-8">
+<label for="Name">
+<span class="<#ERROR name='ERRORName'>">
+Appointment Name
+</span>
+</label>
+<input type="text" class="form-control" name="Name" id="Name" value="<#PARAM name='Name'>">
+<div class="small-notes">Visible to staff.</div>
+</div>
+
+<!-- Not displayed added d-none -->
+<div class="form-check ml-3 d-none">
+<label class="form-check-label <#ERROR name='ERRORAvailableToProxies'>" for="AvailableToProxies">
+<input class="form-check-input" type="checkbox" id="AvailableToProxies" name="AvailableToProxies" value="true" >Available to Proxies?
+</label>
+</div>
+
+<div class="form-group col-md-8">
+<button class="btn btn-primary btn-md" type="button" id="CreateAppointmentButton" name="CreateButton" value="Create Appointment">Create Appointment</button>
+<button class="btn btn-secondary btn-md collapse-control-expand expanded" data-toggle="collapse" data-target="#newAppointmentCollapse" aria-expanded="false" aria-controls="newAppointmentCollapse" type="button" role="button" id="buttonCancel">Cancel</button>
+</div>
+
+<div id="SchedulerError" class="col-md-8" role="alert"></div>
+<div id="SchedulerMessage" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<p></p>
+
+  <h2>Scheduled Appointments</h2>
+  <div class="row">
+   <p class="text-muted" style="padding-left: 16px;">You are currently viewing <#PARAM name='ApptType'> appointments.</p>
+
+  <div class="col-md-4 text-right">
+    <div class="btn-group mx-w-100" role="group">
+      <button id="btnGroupDropApptFilter" type="button" class="btn btn-secondary btn-secondary-append dropdown-toggle mx-w-100" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Filter Appointments">
+        Filter
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDropApptFilter">
+        <a class="dropdown-item btn btn-light" href="aeon.dll?Action=10&amp;Form=94&amp;ApptType=All">View All Appointments</a>
+        <a class="dropdown-item btn btn-light" href="aeon.dll?Action=10&amp;Form=94&amp;ApptType=Active">View Only Active Appointments</a>
+      </div>
+    </div>
+  </div>
+ </div>
+<#DATAREPEATER name="ViewAppointments" TemplateFile="templates/DataRow_DefaultAppointment.html" context="both" noDataAction="<div class='no-data-message'>No appointments are currently scheduled</div>" pending="true">
+<br />
+</main>
+
+</div>
+<#INCLUDE filename="include_footer.html">
+</body>
+</html>

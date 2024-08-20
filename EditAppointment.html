@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>TASCR - Edit Appointment</title>
+    <#INCLUDE filename="include_head.html">
+    <#INCLUDE filename="include_appointment_scripts.html">
+</head>
+
+<body>
+
+    <#INCLUDE filename="include_header.html">
+
+    <#INCLUDE filename="include_nav.html">
+    <div class="container">
+        <main id="content" aria-label="Content">
+            <form action="aeon.dll" method="post" name="EditAppointment">
+                <input type="hidden" name="AeonForm" value="EditAppointment">
+                <input type="hidden" id="Site" name="Site" value="<#PARAM name='Site'>">
+                <input type="hidden" id="AppointmentID" name="AppointmentID" value="<#PARAM name='AppointmentID'>">
+                <input type="hidden" id="ReadingRoomID" name="ReadingRoomID" value="<#PARAM name='ReadingRoomID'>">
+                <input type="hidden" id="StartTime" name="StartTime" value="<#PARAM name='StartTime'>">
+                <input type="hidden" id="StopTime" name="StopTime" value="<#PARAM name='StopTime'>">
+
+                <h2>Edit Appointment</h2>
+                <div id="statusLine"><#STATUS></div>
+
+                <section name="appointment-info">
+                    <div class="container px-0 px-md-3">
+                        
+                        <div class="container px-0 px-md-3">
+            
+                            <div class="row">
+            
+                                <div class="col">
+                                    <div class="form-group col-md-8">
+                                        <label for="AppointmentDate">
+                                            <span class="<#ERROR name='ERRORAppointmentDate'>">
+                                                Appointment Date
+                                            </span>
+                                            <span class="req">(required)</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="AppointmentDate" name="AppointmentDate" aria-describedby="calendarNote" type="text" value="<#PARAM name='AppointmentDate'>" required>
+                                        </div>
+                                        <span id="calendarNote" class="sr-only">A calendar is available below.</span>
+                                    </div>
+                                    <div id="datePickerContainer" class="form-group col-md-8"></div>
+                                </div>
+                    
+                                <div class="col">
+
+                                    <div class="form-group col-md-8">
+                                        <label for="ReadingRoomName">
+                                            <span class="field">
+                                                <span>Reading Room</span>
+                                            </span>
+                                        </label>
+                                        <input class="form-control" id="ReadingRoomName" name="ReadingRoomName" type="text" value="<#PARAM name='ReadingRoomName'>" readonly>
+                                        </select>
+                                    </div>
+                    
+                                    <div class="form-group col-md-8">
+                                        <label for="AppointmentLength">
+                                            <span class="field">
+                                                <span class="<#ERROR name='ERRORAppointmentLength'>">Length of Appointment</span>
+                                            </span>
+                                            <span class="req">(required)</span>
+                                        </label>
+                                        <select class="custom-select mr-sm-2" id="AppointmentLength" name="AppointmentLength" size="1" required>
+                                        </select>
+										<div class="small-notes">Make your best estimate. You do not need to use the full amount of time and may add more time within operating hours if needed.</div>
+                                    </div>
+                    
+                                    <div class="form-group col-md-8">
+                                        <label for="AppointmentTime">
+                                            <span class="field">
+                                                <span class="<#ERROR name='ERRORAppointmentTime'>">Appointment Time</span>
+                                            </span>
+                                            <span class="req">(required)</span>
+                                        </label>
+                                        <select class="custom-select mr-sm-2" id="AppointmentTime" name="AppointmentTime" size="1" required>
+                                        </select>
+                                    </div>
+                    
+                                    <div class="form-group col-md-8">
+                                        <label for="Name">
+                                            <span class="<#ERROR name='ERRORName'>">
+                                                Appointment Name
+                                            </span>
+                                        </label>
+                                        <input type="text" class="form-control" name="Name" id="Name" value="<#PARAM name='Name'>">
+										<div class="small-notes">Visible to staff.</div>
+                                    </div>
+            
+									<!-- Not displayed added d-none -->
+                                    <div class="form-check ml-3 d-none">
+                                        <label class="form-check-label <#ERROR name='ERRORAvailableToProxies'>" for="AvailableToProxies">
+                                            <input class="form-check-input" type="checkbox" id="AvailableToProxies" name="AvailableToProxies" value="true" checked="<#PARAM name='AvailableToProxies'>" <#CONDITIONAL type="UserOwnsAppointment" false="DISABLED">>Available to Proxies?
+                                        </label> 
+                                    </div>
+           
+                                    <div id="SchedulerError" class="col-md-8" role="alert"></div>
+                                    <div id="SchedulerMessage" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+            
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                    
+                </section>
+
+                <button class="btn btn-primary btn-md" type="submit" id="buttonSubmitAppointment" name="SubmitButton" value="Submit Appointment">Submit Appointment</button>
+                <button class="btn btn-secondary btn-md" type="submit" role="button" id="buttonCancel" name="SubmitButton" value="Cancel - Return to Main Menu" formnovalidate>Cancel</button>
+                
+            </form>
+        </main>
+    </div>
+	        <#INCLUDE filename="include_footer.html">
+</body>
+
+</html>

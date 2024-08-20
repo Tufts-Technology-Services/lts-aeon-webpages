@@ -1,0 +1,37 @@
+<h3 class="section-header" id="RequestTypeHeader">Request type</h3>
+<section>
+    <div role="group" class="form-group col-md-8" aria-labelledby="RequestTypeHeader">
+
+        <div class="form-check">
+            <input type="radio" id="radio-schedule" class="form-check-input" data-toggle-value="schedule" name="RequestMode" value="schedule" CHECKED>
+            <label for="radio-schedule" class="form-check-label">Schedule appointment</label>
+        </div>
+
+        <div class="form-check">
+            <input type="radio" id="radio-duplication" class="form-check-input" data-toggle-value="duplication" name="RequestMode" value="duplication">
+            <label for="radio-duplication" class="form-check-label">Request photoduplication</label>
+        </div>
+    </div>
+</section>
+    
+    
+<h3 class="section-header" data-toggle-group="schedule">Schedule Appointment</h3>
+<section name="schedule-section" data-toggle-group="schedule">
+    <input type="hidden" name="RequestType" value="Loan">
+    <#INCLUDE filename="include_appointment_info_no_site.html">
+</section>
+
+
+<h3 class="section-header" data-toggle-group="duplication">Order Information</h3>
+<section name="duplication-section" data-toggle-group="duplication">
+    <input type="hidden" name="RequestType" id="RequestType" value="Copy">
+    
+    <#INCLUDE filename="include_photoduplication_archival_request.html">	
+    
+    <script type="text/javascript"src="js/billingContextOptionHandler.js"></script>
+    <script type="text/javascript" src="js/billingAccountsOptionHandler.js"></script>
+</section>
+
+<button class="btn btn-primary btn-md" type="submit" id="buttonSubmitRequest" name="SubmitButton" value="Submit Request">Submit Request</button>
+<button data-toggle-group="schedule" class="btn btn-secondary btn-md" type="submit" id="buttonSaveRequest" name="SubmitButton" value="Save Request" formnovalidate <#CONDITIONAL type="ConvertingToCopy" true="disabled">>Save Request for Later</button>
+<button class="btn btn-secondary btn-md" type="submit" role="button" id="buttonCancel" name="SubmitButton" value="Cancel - Return to Main Menu" formnovalidate>Cancel - Return to Main Menu</button>

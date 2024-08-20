@@ -1,0 +1,15 @@
+# Aeon dll files
+*.dll
+# Aeon log file creation
+*.props
+# Aeon path
+webpath.txt
+# Replaced files
+*.replaced
+# Config files
+*.config
+# Testweb
+testweb/
+# Random files
+thumbs.db
+*.tufts

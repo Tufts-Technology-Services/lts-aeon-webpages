@@ -1,0 +1,96 @@
+<input type="hidden" name="TransactionNumber" value="<#PARAM name='TransactionNumber'>">
+
+<h2 class="h3 header-detailed">Researcher Tags</h2>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="list-group-item d-flex justify-content-between">
+				<span class="transaction-label">Current Tags </span>
+				<strong>
+					<span id="currentTag"><#PARAM name="ResearcherTags"></span>
+				</strong>
+		</div>
+	</div>
+</div>
+<button type="button" class="btn btn-secondary btn-md" data-toggle="modal" data-target="#requestResearcherTags">
+	 <span aria-hidden="true" class="fas fa-pen"></span>  Update Researcher Tags
+</button>
+
+<div class="modal fade" id="requestResearcherTags" tabindex="-1" role="dialog" aria-labelledby="requestResearcherTagsModalLabel"
+ aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="h4 modal-title" id="requestResearcherTagsModalLabel">Update Researcher Tags</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div id="researcher-tags-update">
+					<div class="form-group">
+						<label for="researcher-tags-input">
+							Researcher Tags
+						</label>
+						<div class="value">
+							<input type="text" class="form-control" name="ResearcherTags" id="researcher-tags-input" value="<#PARAM name='ResearcherTags'>" aria-describedby="researcherTagNotes">
+							<div class="small-notes">Enter a comma-separated list of the tags you want associated with this request.</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary btn-sm" type="submit" id="update-researcher-tags-button">Update Tags</button>
+				<button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script language="javascript">
+	$(document).ready(function () {
+		var updateResearcherTagsButton = $("#update-researcher-tags-button");
+		var researcherTagsInput = $("#researcher-tags-input");
+		var transactionNumberInput = $("input[name=TransactionNumber]");
+
+		function checkExistingTags() {
+			if ($('#currentTag').text().trim() == '') {
+				$('#currentTag').html('There are no tags');
+			}
+		}
+		checkExistingTags();
+		if (updateResearcherTagsButton && researcherTagsInput && transactionNumberInput) {
+			updateResearcherTagsButton.click(function () {
+				updateResearcherTagsButton.attr("disabled", "disabled");
+				$.ajax({
+					type: "POST",
+					url: "aeon.dll/ajax?query=UpdateResearcherTags",
+					data: {
+						transactionNumber: transactionNumberInput.attr("value"),
+						tags: encodeURIComponent(researcherTagsInput.val())
+					},
+					success: function (data, textStatus, jqXHR) {
+						updateResearcherTagsButton.removeAttr("disabled");
+
+						if (typeof data === "string" && data.indexOf("Error:") == 0) {
+							alert(data);
+						} else {
+							if (typeof data.tags !== 'undefined') {
+								$('#currentTag').html(data.tags);
+							}
+							else {
+								$('#currentTag').html('');
+								checkExistingTags();
+							}
+							$('#requestResearcherTags').modal('hide');
+						}
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						updateResearcherTagsButton.removeAttr("disabled");
+						alert('Error updating researcher tags');
+						throw errorThrown;
+					}
+				});
+			});
+		}
+	});
+</script>

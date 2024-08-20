@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<title>TASCR - Saved Requests</title>
+	<#INCLUDE filename="include_head.html">
+	<#INCLUDE filename="include_head_request.html">
+	<script type="text/javascript" src="js/KeepInReview.js"></script>
+</head>
+
+<body>
+    <#INCLUDE filename="include_header.html">
+	<#INCLUDE filename="include_menu.html">
+	<div class="container">
+	  <main id="content" aria-label="Content">
+		<#RETURNLINK linkText="Return to TASCR." linkTextAutoRedirect="Return to TASCR. You will be automatically redirected within <#REDIRECTSECONDS> seconds.">
+		<form action="aeon.dll" method="post" id="ViewUserReviewRequests" name="ViewUserReviewRequests">
+
+			<input type="hidden" name="AeonForm" value="ViewUserReviewRequests">
+			<div class="row">
+				<div class="col-lg-7">
+					<h2 class="header-special">Saved Requests</h2>
+					<p>This queue contains all requests that you saved for later action.</p>
+				</div>
+		
+				<div class="col-lg-5 text-right">
+					<button type="button" class="selectOptions btn btn-link checkAll" data-form="ViewUserReviewRequests" aria-label="Select all of the displayed requests." role="button" >Select All</button>
+					<button type="button" class="selectOptions btn btn-link checkNone" data-form="ViewUserReviewRequests" aria-label="Unselect all of the displayed requests." role="button" >Select None</button>
+				</div>
+			</div>
+
+				<span id="saved-requests" class="new-line">
+					<#DATAREPEATER Name="RequestsInReview" TemplateFile="Templates\DataRow_ReviewRequest.html" NoDataAction="<div class='no-data-message'>You do not currently have any requests in review</div>">
+				</span>
+			
+			<p></p> 
+			
+			<h2 class="header-special">Appointments</h2>
+			<p>Associate your selected requests with an appointment or schedule a new one.</p>
+
+			
+				<!-- This is the default custom include file.
+					The other include file is include_appointment_info_tuft.html and is
+					used on the DefaultRequest/EditDefaultRequest pages
+				-->
+				<#INCLUDE filename="include_appointment_info.html">
+				
+				<script>
+					$(document).ready(function () {
+						if (($('#saved-requests .card').length == 0)) {	
+							$('#appointment-info-div').hide();
+							<!-- Tufts added -->
+							$('#reviewButtons').hide();
+						}	
+						else
+						{
+							$('#appointment-info-div').show();
+							<!-- Tufts added -->
+							$('#reviewButtons').show();
+						}
+					});
+				</script>
+
+				<div id="reviewButtons">
+				<input class="btn btn-primary btn-md" type="submit" name="SubmitButton" id="submitInformation" value="Submit Selected Requests">
+				<input class="btn btn-secondary btn-md" type="submit" name="SubmitButton" id="submitCancelRequests" formnovalidate value="Cancel Selected Requests">
+				<input class="btn btn-secondary btn-md" type="submit" name="SubmitButton" id="submitCancel" formnovalidate value="Cancel">
+				</div>
+				
+			</form>
+		</main>
+	</div>
+	    <#INCLUDE filename="include_footer.html">
+</body>
+
+</html>

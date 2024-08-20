@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>TASCR - Appointment Requests</title>
+    <#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+
+    <#INCLUDE filename="include_header.html">
+    
+    <#INCLUDE filename="include_menu.html">
+    <div class="container">
+        <main id="content" aria-label="Content">
+            <a class="btn btn-light menuEdit <#APPOINTMENT field='AppointmentActionAllowed' name='Edit' disabledValue='d-none'>" 
+                href="aeon.dll?Action=20&amp;Form=97&amp;Value=<#APPOINTMENT field='ID'>">
+                <span aria-hidden="true" class="fas fa-edit text-primary"></span> Edit Appointment</a>
+            <a class="btn btn-light menuCancel <#APPOINTMENT field='AppointmentActionAllowed' name='Cancel' disabledValue='d-none'>"
+                href="aeon.dll?Action=21&amp;Type=17&amp;Value=<#APPOINTMENT field='ID'>">
+                <span aria-hidden="true" class="fas fa-ban text-danger"></span> Cancel Appointment
+            </a>
+
+            <h2 class="h3 reqHeader mt-4 py-0">Appointment Information</h2>
+            
+            <div class="row">
+
+                <div class="col-lg-12">
+            
+                    <div class="field list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="transaction-label">Name</span>
+                            <strong>
+                                <span class="field-value mr-1"><#APPOINTMENT field="Name"></span>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="field list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="transaction-label">Reading Room Name</span>
+                            <strong>
+                                <span class="field-value mr-1"><#APPOINTMENT field="ReadingRoomName"></span>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="field list-group-item <#APPOINTMENT display='CompareValue' field='AvailableToProxies' compareValue='true' disabledValue='d-none'>">
+                        <div class="d-flex justify-content-between">
+                            <span class="transaction-label">This appointment is for</span>
+                            <strong>
+                                <span class="field-value mr-1"><#APPOINTMENT field="FirstOrPreferredName"> <#APPOINTMENT field="LastName"></span>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="field list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="transaction-label">Start Time</span>
+                            <strong>
+                                <span class="field-value mr-1" data-formatOnly="true" data-formatString="LLL" data-servertime="<#APPOINTMENT field='StartTime'>"><#APPOINTMENT field="StartTime"></span>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="field list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="transaction-label">Stop Time</span>
+                            <strong>
+                                <span class="field-value mr-1" data-formatOnly="true" data-formatString="LLL" data-servertime="<#APPOINTMENT field='StopTime'>"><#APPOINTMENT field="StopTime"></span>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="field list-group-item">
+                        <div class="d-flex justify-content-between">
+                            <span class="transaction-label">Appointment Status</span>
+                            <strong>
+                                <span class="field-value mr-1"><#APPOINTMENT field="AppointmentStatus"></span>
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <h2 class="h3 reqHeader mt-4 py-0">Appointment Requests</h2>
+
+            <#DATAREPEATER name="ViewAppointmentRequests" TemplateFile="templates/DataRow_DefaultRequest.html" noDataAction="<div class='no-data-message'>No requests are associated with this appointment</div>" orderby="TransactionNumber DESC">
+            
+            <div>
+                <a class="btn btn-primary btn-md" href="<#ACTION action='10' form='96'>&amp;Value=<#APPOINTMENT field='ID'>">Download iCalendar file</a>
+            </div>
+
+        </main>
+		
+    </div>
+<#INCLUDE filename="include_footer.html">
+</body>
+
+</html>

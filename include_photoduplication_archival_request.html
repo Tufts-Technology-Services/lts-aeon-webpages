@@ -1,0 +1,86 @@
+<div class="form-group col-md-4 <#PARAM name='BillingAccountsVisible' disabled='d-none'>">
+        <label for="BillingAccountId">
+                <span class="<#ERROR name='ERRORBillingAccountId'>">
+                Billing Account
+                </span>
+        </label>
+        <select class="custom-select mr-sm-2" id="BillingAccountId" name="BillingAccountId">
+                <#OPTION name="BillingAccounts">
+        </select>
+</div>
+
+<div class="form-group col-md-5 <#PARAM name='RequestLinksVisible' enabled='RequestForEnabled' disabled='d-none'>">
+        <label for="RequestLinkPhoto">
+                <span class="<#ERROR name='ERRORRequestLink'>">
+                Request for
+                </span>
+        </label>
+        <select class="custom-select mr-sm-2" id="RequestLinkPhoto" name="RequestLink" size="1">
+                <#OPTION name="RequestLinks" hideUsernames="true" hideEvents="true">
+        </select>
+</div>
+
+<div class="form-group col-md-3">
+        <label for="ItemPages">
+                <span class="<#ERROR name='ERRORItemPages'>">
+                        Inclusive Pages
+                </span>
+        </label>
+        <input type="text" class="form-control" name="ItemPages" id="ItemPages" value="<#PARAM name='ItemPages'>" aria-describedby="itemPagesNotes">
+        <div class="small-notes" id="itemPagesNotes">Additional citation information can be added as notes.</div>
+</div>
+
+<div class="form-group col-md-2">
+        <label for="PageCount">
+                <span class="<#ERROR name='ERRORPageCount'>">
+                        Page Count
+                </span>
+        </label>
+        <input type="text" class="form-control" name="PageCount" id="PageCount" value="<#PARAM name='PageCount'>">
+</div>
+
+
+<div class="form-group col-md-4">
+        <label for="Format">
+                <span class="<#ERROR name='ERRORFormat'>">
+                        Format
+                </span>
+        </label>
+        <select class="custom-select mr-sm-2" id="Format" name="Format" size="1">
+                <#OPTION name="Formats">
+        </select>
+</div>
+
+
+
+<div class="form-group col-md-4">
+        <label for="ShippingOption">
+                <span class="<#ERROR name='ERRORShippingOption'>">
+                        Shipping
+                </span>
+        </label>
+        <select class="custom-select mr-sm-2" id="ShippingOption" name="ShippingOption" size="1" >
+                <#OPTION name="ShippingOptions">
+        </select>
+</div>
+
+<div class="form-group col-md-4">
+        <label for="ServiceLevel">
+                <span class="<#ERROR name='ERRORServiceLevel'>">
+                        Service Level
+                </span>
+        </label>
+        <select class="custom-select mr-sm-2" id="ServiceLevel" name="ServiceLevel" size="1" >
+                <#OPTION name="ServiceLevels">
+        </select>
+        
+</div>
+
+<div class="form-check">
+        <label for="ForPublication">
+                <span class="<#ERROR name='ERRORForPublication'>">
+                        <input type="checkbox" class="form-check-input" id="ForPublication" name="ForPublication" value="Yes"  default="false" <#CHECKED name="ForPublication">> For Publication?
+                </span>
+        </label>
+</div>
+

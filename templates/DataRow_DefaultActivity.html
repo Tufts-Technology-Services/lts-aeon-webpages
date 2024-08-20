@@ -1,0 +1,50 @@
+  <div class="card">
+    <div id="activity<#DATAROW field='Id'>">
+      <div class="card-body">
+					<div class="row">				
+							<div class="col-lg-8 col-md-12 text-muted">
+									<div class="card-title h4">
+											<a href="aeon.dll?&amp;Action=10&amp;Form=91&amp;Value=<#DATAROW field='Id'>"><#DATAROW field="Name"></a>
+										</div>
+										<!-- added font-weight-bold class to field for all similar areas in this document-->
+										<div class="field font-weight-bold text-muted">Description&nbsp;
+										<!-- removed font-weight-bold to the field value and added field-text-muted -->
+												<span class="field-value field-text-muted">
+														<#DATAROW field="Description">
+												</span>
+										</div>
+
+											<div  class="field mb2 font-weight-bold text-muted" data-toggle="tooltip" data-placement="right" title="<#DATAROW field='ActivityStatus'> on <#DATAROW field='ActivityStatusDate'>">
+												Status&nbsp;<span class="field-value field-text-muted"><#DATAROW field="ActivityStatus"></span>
+											</div>				
+								
+							</div>		
+					
+							<div class="col-lg-4 col-md-12 text-left">
+		
+									<div class="btn-group" role="group" aria-label="Actions for Reqest <#DATAROW field='TransactionNumber'>">
+											<a class="btn btn-primary" role="button" href="aeon.dll?&amp;Action=10&amp;Form=91&amp;Value=<#DATAROW field='Id'>"><span aria-hidden="true" class="fa fa-info-circle"></span> &nbsp;Details</a>
+
+											<div class="btn-group" role="group">
+											<button id="btnGroupActivityDrop<#DATAROW field='Id'>" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												 <span aria-hidden="true" class="fas fa-file-download"></span> &nbsp;Download
+											</button>
+											<div class="dropdown-menu" dropdown-menu-right aria-labelledby="btnGroupActivityDrop<#DATAROW field='Id'>">
+												<a class="dropdown-item btn btn-light" href="aeon.dll?Action=10&amp;Form=92&amp;Value=<#DATAROW field='ID'>" class="menuDownloadXls"><span aria-hidden="true" class="far fa-file-excel"></span> &nbsp;XLS</a>
+												<a class="dropdown-item btn btn-light" href="aeon.dll?Action=10&amp;Form=93&amp;Value=<#DATAROW field='ID'>" class="menuDownloadiCalendar"><span aria-hidden="true" class="far fa-calendar-plus"></span> &nbsp;iCalendar</a>
+											</div>
+											</div>
+										</div>
+
+											<div class="field font-weight-bold text-muted">Start Date&nbsp;
+												<span class="field-value field-text-muted convert-local" data-iso8601="<#DATAROW field='BeginDate' display='ISO8601'>"><#DATAROW field="BeginDate"></span>
+											</div>
+
+												<div class="field font-weight-bold text-muted">End Date&nbsp;
+												    <span class="field-value field-text-muted convert-local" data-iso8601="<#DATAROW field='EndDate' display='ISO8601'>"><#DATAROW field="EndDate"></span>
+												</div>
+										</div>
+							</div>
+      </div>
+    </div>
+  </div>

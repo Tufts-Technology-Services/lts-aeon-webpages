@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <!-- Required meta tags -->
+	<title>TASCR Logon</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="iphone-icon.png"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/aeon.css" media="screen">
+	<link rel="stylesheet" href="css/print.css" media="print">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/cookieconsent.min.css" />
+	<link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+    <header class="head">
+        <div>
+            <a href="#content" accesskey="S" onclick="$('#content').focus();" class="offscreen">Skip to Main Content</a>
+        </div>
+		<div class="container">
+			<a href="https://tarc.tufts.edu" title="Tufts Archival Research Center" rel="home" id="customLogo">Tufts Archival Research Center</a>
+			<ul class="link-menu">
+				<li><a href="https://tarc.tufts.edu/research/ask-an-archivist">Ask an Archivist</a></li>
+				<li class="item"><a href="https://archives.tufts.edu">Archives@Tufts</a></li>
+			</ul>
+		</div>
+		
+		<div id="colorBlock"></div>
+    </header>
+	
+	<div class="alerts-bar">
+		<div class="container" id="webAlerts"></div>
+	</div>
+	
+    <div class="container">
+	  <main id="content" aria-label="Content">
+
+         <div class="logon-directions">
+			<span class="logon-header">TASCR</span>
+			<div>
+				<span class="notice hide">
+					<span class="notice-header">TASCR</span>
+				TASCR is currently not available for use. We appreciate your patience and apologize for any inconvenience this may cause.</p>
+				</span>
+			</div>
+			<div>
+				<span class="login-text">
+					Welcome to our Tufts Archives and Special Collections Research Account System (TASCR)! With your TASCR account, you can make new requests, view <a href="https://tarc.tufts.edu/research">useful information about research</a>
+					at <a href="https://tarc.tufts.edu/">Tufts Archival Research Center</a>, or review our <a href="https://tarc.tufts.edu/research/policies-fees">policies and procedures</a>. If you would like to schedule a reference appointment or have any other questions, 
+					email us at <a href="mailto:archives@tufts.edu">archives@tufts.edu</a> and we'll be happy to help!
+				</span>
+			</div>
+        </div>
+			
+		<div class="section">
+			<div class="col col-tufts">
+				<form action="aeon.dll" method="post" name="Logon">
+					<input type="hidden" name="AeonForm" value="Logon">
+					<div class="logonform tufts">
+						<div class=" info">
+							<span class="first-line">Tufts University faculty, students, staff, and affiliates with an active Tufts University username and password.</span>
+						</div>
+
+						<span class="tufts-legend">Tufts Logon</span>
+						<div class="logon-field form-group col-md-8-logon">
+							<label for="username">
+								Tufts username
+							</label>
+							<input type="text" class="form-control" name="username" id="username" value="">
+						</div>
+
+						<div class="logon-field form-group last-form-group col-md-8-logon">
+							<label for="password">
+								Tufts password
+							</label>
+							<input type="password" class="form-control" name="password" id="password" autocomplete="off">
+						</div>
+						<div class="forgot-password-link">
+							<a href="https://tuftstools.tufts.edu">
+							<span aria-hidden="true" class="fas fa-question-circle"></span>  Forgot Password?</a>
+						</div>
+
+						<button class="btn btn-primary btn-md btn-logon" type="submit" name="SubmitButton" value="Sign In">Sign In</button>
+						<div class="info">
+							<p class="tufts-first-time">First-time users will be directed to a registration form to create a research account.</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		
+			<div class="col col-tufts">
+				<form action="aeon.dll" method="post" name="Logon">
+					<input type="hidden" name="AeonForm" value="Logon">
+					<div class="logonform nontufts">
+						<div class=" info">
+							<span class="first-line">All users who do not hold an active Tufts University username and password.</span>
+						</div>
+
+						<span class="non-tufts-legend">Non-Tufts Researchers Logon</span>
+						<div class="logon-field form-group col-md-8-logon">
+							<label for="username">
+								Username
+							</label>
+							<input type="text" class="form-control" name="username" id="username" value="">
+						</div>
+
+						<div class="logon-field last-form-group col-md-8-logon">
+							<label for="password">
+								Password
+							</label>
+							<input type="password" class="form-control" name="password" id="password" autocomplete="off">
+						</div>
+						
+						<div class="forgot-password-link">
+
+							<a href="aeon.dll?Action=10&amp;Form=84">
+							<span aria-hidden="true" class="fas fa-question-circle"></span>  Forgot Password?</a>
+
+						</div>
+						
+
+						<button class="btn btn-primary btn-md btn-logon" type="submit" name="SubmitButton" value="Sign In">Sign In</button>
+						<div class="first-time-link">
+						  	<!--<p class="tufts-first-time">New account creation for non-Tufts researchers is unavailable until Thursday, January 5, 2023 at 5 pm. Should you need assistance in the meantime, please contact us at <a href="mailto:archives@tufts.edu">archives@tufts.edu</a>.</p>-->
+							<!--Commented out for spam -->
+							
+							<a href="aeon.dll?Action=10&amp;Form=79"><span aria-hidden="true" class="fas fa-user-plus"></span>  First Time Users</a>
+							
+						</div>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!--
+        <div class="forgot-password-link">
+            <a href="aeon.dll?Action=10&amp;Form=84">
+                <span aria-hidden="true" class="fas fa-question-circle"></span>  Forgot Password?
+            </a>
+        </div>
+        <div class="first-time-link">
+            <a href="aeon.dll?Action=10&amp;Form=79">
+                <span aria-hidden="true" class="fas fa-user-plus"></span>  First Time Users
+            </a>
+        </div>
+		-->
+		
+		<div class="section">
+			<p class="assistance-text">For assistance with registration, please contact <a href="mailto:archives@tufts.edu">archives@tufts.edu</a>.</p>
+		</div>
+		</main>
+    </div>
+	<footer class="foot">
+		<div class="footer-content">
+			<div class="footer-logo">
+				<a href="https://tufts.edu"> <img src="images/tufts-logo-univ-white.svg" alt="Tufts University Logo" class="tufts-logo"/></a>
+			</div>
+			<div class="footer-address">
+				<h3>Contact</h3>
+				<p>
+					Tufts Archival Research Center<br>
+					Tisch Library Building<br>
+					35 Professors Row<br>
+					Medford, MA 02155<br>
+				</p>
+				<p>
+					archives@tufts.edu<br>
+					Phone: <a href="tel:617-627-3737">617.627.3737</a>
+				</p>
+			</div>
+			<div class="footer-links">
+				<h3>Feedback</h3>
+					<ul class="menu">
+						<li>
+							<a href="/about/contact-us/give-us-feedback" data-drupal-link-system-path="node/235">Send us feedback</a>
+						</li>
+						<li>
+							<a href="https://www.tufts.edu/about/privacy">Privacy Statement</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+		<!--
+            <div>Powered by Aeon</div>
+            <div>
+                &copy; 2019 <a href="http://www.atlas-sys.com"> Atlas Systems, Inc.</a> All Rights Reserved.
+            </div>
+		-->
+        </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+    <script src="js/cookieconsent.min.js" data-cfasync="false"></script>
+    <script src="js/atlasCookieConsent.js"></script>
+	<script src="js/webAlerts.js"></script>
+</body>
+
+</html>

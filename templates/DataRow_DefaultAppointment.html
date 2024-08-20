@@ -1,0 +1,49 @@
+<div class="card appointmentResult">
+    <div id="request<#DATAROW field='Name'>">
+      	<div class="card-body">
+			<div class="row">
+				<div class="col-lg-7 col-md-12">
+					<h4 class="card-title">
+						<a href="aeon.dll?&amp;Action=10&amp;Form=95&amp;Value=<#DATAROW field='ID'>"><#DATAROW field="Name"></a>
+					</h4>
+					<div class="h5 card-subtitle text-muted"><#DATAROW field="ReadingRoomName"></div>
+					<span class="field text-muted">Status 
+						<span class="field-value font-weight-bold ml-1">
+							<#DATAROW field="AppointmentStatus">
+						</span>
+					</span>
+
+					<div class="<#DATAROW display='CompareValue' field='AvailableToProxies' compareValue='true' disabledValue='d-none'> field text-muted">This appointment is for
+						<span class="field-value font-weight-bold">
+							<#DATAROW field="FirstOrPreferredName"> <#DATAROW field="LastName">
+						</span>
+					</div>
+				</div>
+
+				<div class="col-lg-5 col-md-12 text-right">
+				
+					<div class="btn-group" role="group" aria-label="Actions for Appointment <#DATAROW field='ID'>">
+						<a class="btn btn-primary" role="button" href="aeon.dll?&amp;Action=10&amp;Form=95&amp;Value=<#DATAROW field='ID'>"><span class="fa fa-info-circle"></span> Details</a>
+
+						<div class="btn-group" role="group">
+							<button id="btnGroupDrop<#DATAROW field='ID'>" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Actions
+							</button>
+							<div class="dropdown-menu dropdown-menu-right" data-noaction-message="You are not able to perform any actions for this appointment" aria-labelledby="btnGroupDrop<#DATAROW field='ID'>">
+								<a class="dropdown-item btn btn-light menuEdit <#DATAROW field='AppointmentActionAllowed' name='Edit' disabledValue='d-none'>" href="aeon.dll?Action=20&amp;Form=97&amp;Value=<#DATAROW field='ID'>"><span aria-hidden="true" class="fas fa-edit text-primary"></span> Edit Appointment</a>
+								<a class="dropdown-item btn btn-light menuCancel <#DATAROW field='AppointmentActionAllowed' name='Cancel' disabledValue='d-none'>" href="aeon.dll?Action=21&amp;Type=17&amp;Value=<#DATAROW field='ID'>"><span aria-hidden="true" class="fas fa-ban text-danger"></span> Cancel Appointment</a>
+								<a class="dropdown-item btn btn-light menuDownloadiCalendar" href="aeon.dll?Action=10&amp;Form=96&amp;Value=<#DATAROW field='ID'>"><span aria-hidden="true" class="far fa-calendar-plus mr-1"></span>Download iCalendar</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="text-muted">
+						<span class="font-weight-bold ml-1" data-formatOnly="true" data-formatString="LLL" data-servertime="<#DATAROW field='StartTime'>"><#DATAROW field="StartTime"></span>
+						<span class="font-weight-bold ml-1">&ndash;</span>
+						<span class="font-weight-bold ml-1" data-formatOnly="true" data-formatString="LT" data-servertime="<#DATAROW field='StopTime'>"><#DATAROW field="StopTime"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

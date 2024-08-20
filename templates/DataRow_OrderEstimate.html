@@ -1,0 +1,82 @@
+<div class="card">
+	<div id="request<#DATAROW field=" TransactionNumber ">">
+		<div class="card-body">
+			<div class="row">
+				<div class="checkbox col-lg-1">
+					<input class="form-input" type="checkbox" name="TransactionSelect" title="Select this transaction" data-balanceRemaining="<#DATAROW field='BalanceRemaining' display='Numeric'>" data-totalCharge="<#DATAROW field='CurrentCharges' display='Numeric'>" value="<#DATAROW field='TransactionNumber'>" />
+				</div>
+
+				<div class="col-lg-7 col-md-12 text-left">
+					<div class="card-title h4">
+						<a href="aeon.dll?&amp;Action=10&amp;Form=63&amp;Value=<#DATAROW field='TransactionNumber'>">
+							<#DATAROW field="ItemTitle">
+						</a>
+					</div>
+
+					<div class="card-subtitle h5 mb2 text-muted">
+						<#DATAROW field="ItemSubtitle">
+					</div>
+
+					<div class="field text-muted">Transaction Number&nbsp;
+						<span class="field-value font-weight-bold">
+							<#DATAROW field="TransactionNumber">
+						</span>
+			 		</div>
+
+					<div class="field text-muted">Call Number&nbsp;
+						 <span class="field-value font-weight-bold"><#DATAROW field="CallNumber"></span>
+					</div>
+
+					<div class="field text-muted">Volume/Box&nbsp;
+					 	<span class="field-value font-weight-bold"><#DATAROW field="ItemVolume"></span>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-12 text-left">
+						<div class="btn-group" role="group" aria-label="Actions for Reqest <#DATAROW field='TransactionNumber'>">
+								<a class="btn btn-primary" role="button" href="aeon.dll?&amp;Action=10&amp;Form=63&amp;Value=<#DATAROW field='TransactionNumber'>">
+									<span aria-hidden="true" class="fa fa-info-circle"></span> &nbsp;Details</a>
+									<button id="btnGroupDrop<#DATAROW field='TransactionNumber'>" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+									 aria-haspopup="true" aria-expanded="false">
+										Actions
+									</button>
+									<div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop<#DATAROW field='TransactionNumber'>">
+										
+										<a class="dropdown-item btn btn-light ViewFile <#DATAROW field='RequestActionAllowed' name='ViewFile' disabledValue='disabled'>" href="aeon.dll?Action=10&amp;Form=75&amp;Value=<#DATAROW field='TransactionNumber'>">
+											<span aria-hidden="true" class="fas fa-eye"></span> &nbsp;View Request</a>
+										<a class="dropdown-item btn btn-light Edit <#DATAROW field='RequestActionAllowed' name='Edit' disabledValue='disabled'>" href="aeon.dll?Action=20&amp;Form=63&amp;Value=<#DATAROW field='TransactionNumber'>">
+											<span aria-hidden="true" class="fas fa-edit text-primary"></span> &nbsp;Edit Request</a>
+										<a class="dropdown-item btn btn-light Cancel <#DATAROW field='RequestActionAllowed' name='Cancel' disabledValue='disabled'>"
+										 href="aeon.dll?Action=21&amp;Form=10&amp;Value=<#DATAROW field='TransactionNumber'>">
+											<span aria-hidden="true" class="fas fa-ban text-danger"></span> &nbsp;Cancel Request</a>
+									</div>
+							</div>
+
+							<div class="field text-muted">Format&nbsp;
+								<span class="field-value font-weight-bold">
+									<#DATAROW field="Format">
+								</span>
+							</div>
+
+							<div class="field text-muted">Service Level&nbsp;
+								<span class="field-value font-weight-bold">
+									<#DATAROW field="ServiceLevel">
+								</span>
+							</div>
+
+							<div class="field text-muted">Shipping&nbsp;
+								<span class="field-value font-weight-bold">
+									<#DATAROW field="ShippingOption">
+								</span>
+							</div>
+
+							<div class="field text-muted">Estimated Charges&nbsp;
+									<span class="field-value font-weight-bold">
+										<#DATAROW field="CurrentCharges">
+									</span>
+							</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

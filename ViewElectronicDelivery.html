@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>TASCR - Electronically Delivered Items</title>
+    <#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+    <#INCLUDE filename="include_header.html">
+
+    <#INCLUDE filename="include_menu.html">
+    <div class="container">
+    <main id="content" aria-label="Content">
+
+        <h2>Electronically Delivered Items</h2>
+        <#DATAREPEATER name="ViewElectronicDelivery" TemplateFile="templates/DataRow_ElectronicDelivery.html" noDataAction="You have no electronic delivery requests">
+	</main>
+    </div>
+        <#INCLUDE filename="include_footer.html">
+		
+			<script>
+	// Confirm delete link
+			$(".delete_link").click(function() {
+				var conf = confirm('Are you sure you want to delete this file?\nClick OK to delete.');
+				if (conf === true) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			
+	</script>
+</body>
+
+</html>

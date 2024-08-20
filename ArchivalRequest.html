@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Aeon - Archival Request Form</title>
+    <#INCLUDE filename="include_head.html">
+    <#INCLUDE filename="include_head_request.html">
+    <script type="text/javascript" src="js/ArchivalRequest.js"></script>
+	<script type="text/javascript" src="js/duplicationPermissionToggle.js"></script>
+</head>
+
+<body>
+    <#INCLUDE filename="include_header.html">
+    <#INCLUDE filename="include_nav.html">
+    <div class="container">
+        <main id="content" aria-label="Content">
+            <form action="aeon.dll?Action=11&Type=200" method="post" id="RequestForm">
+                <input type="hidden" name="AeonForm" value="ExternalRequest">
+                <input type="hidden" name="SystemID" value="<#ARCHIVE field='SystemID'>">
+                <input type="hidden" name="ReturnLinkURL" value="<#ARCHIVE field='ReturnLinkURL'>">
+                <input type="hidden" name="ReturnLinkSystemName" value="<#ARCHIVE field='ReturnLinkSystemName'>">
+                <input type="hidden" name="Site" id="Site" value="<#ARCHIVE field='Site'>">
+                <input type="hidden" name="identifier" value="<#ARCHIVE field='identifier'>">
+                <input type="hidden" name="publish" value="<#ARCHIVE field='publish'>">
+                <input type="hidden" name="level" value="<#ARCHIVE field='level'>">
+                <input type="hidden" name="title" value="<#ARCHIVE field='title'>">
+                <input type="hidden" name="creation_date" value="<#ARCHIVE field='creation_date'>">
+                <input type="hidden" name="uri" value="<#ARCHIVE field='uri'>">
+                <input type="hidden" name="collection_id" value="<#ARCHIVE field='collection_id'>">
+                <input type="hidden" name="collection_title" value="<#ARCHIVE field='collection_title'>">
+                <input type="hidden" name="repo_code" value="<#ARCHIVE field='repo_code'>">
+                <input type="hidden" name="repo_name" value="<#ARCHIVE field='repo_name'>">
+                <input type="hidden" name="creators" value="<#ARCHIVE field='creators'>">
+                <input type="hidden" name="date_expression" value="<#ARCHIVE field='date_expression'>">
+                <input type="hidden" name="userestrict" value="<#ARCHIVE field='userestrict'>">
+                <input type="hidden" name="language" value="<#ARCHIVE field='language'>">
+                <input type="hidden" name="physical_location_note" value="<#ARCHIVE field='physical_location_note'>">
+                <input type="hidden" name="accessrestrict" value="<#ARCHIVE field='accessrestrict'>">
+                <input type="hidden" name="rights_type" value="<#ARCHIVE field='rights_type'>">
+                <input type="hidden" name="digital_objects" value="<#ARCHIVE field='digital_objects'>">
+                <input type="hidden" name="restrictions_apply" value="<#ARCHIVE field='restrictions_apply'>">
+                <input type="hidden" name="display_string" value="<#ARCHIVE field='display_string'>">
+                <input type="hidden" name="accession_id" value="<#ARCHIVE field='accession_id'>">
+                <input type="hidden" name="use_restrictions_note" value="<#ARCHIVE field='use_restrictions_note'>">
+                <input type="hidden" name="access_restrictions_note" value="<#ARCHIVE field='access_restrictions_note'>">
+                <input type="hidden" name="repository_processing_note" value="<#ARCHIVE field='repository_processing_note'>">
+                <input type="hidden" name="component_id" value="<#ARCHIVE field='component_id'>">
+                <input type="hidden" name="ead_id" value="<#ARCHIVE field='ead_id'>">
+                <input type="hidden" name="ead_location" value="<#ARCHIVE field='ead_location'>">
+                <input type="hidden" name="finding_aid_title" value="<#ARCHIVE field='finding_aid_title'>">
+                <input type="hidden" name="finding_aid_subtitle" value="<#ARCHIVE field='finding_aid_subtitle'>">
+                <input type="hidden" name="finding_aid_filing_title" value="<#ARCHIVE field='finding_aid_filing_title'>">
+                <input type="hidden" name="finding_aid_date" value="<#ARCHIVE field='finding_aid_date'>">
+                <input type="hidden" name="finding_aid_author" value="<#ARCHIVE field='finding_aid_author'>">
+                <input type="hidden" name="finding_aid_description_rules" value="<#ARCHIVE field='finding_aid_description_rules'>">
+                <input type="hidden" name="resource_finding_aid_description_rules" value="<#ARCHIVE field='resource_finding_aid_description_rules'>">
+                <input type="hidden" name="finding_aid_language" value="<#ARCHIVE field='finding_aid_language'>">
+                <input type="hidden" name="finding_aid_sponsor" value="<#ARCHIVE field='finding_aid_sponsor'>">
+                <input type="hidden" name="finding_aid_edition_statement" value="<#ARCHIVE field='finding_aid_edition_statement'>">
+                <input type="hidden" name="finding_aid_series_statement" value="<#ARCHIVE field='finding_aid_series_statement'>">
+                <input type="hidden" name="finding_aid_status" value="<#ARCHIVE field='finding_aid_status'>">
+                <input type="hidden" name="finding_aid_note" value="<#ARCHIVE field='finding_aid_note'>">
+                <input type="hidden" name="restrictions_apply" value="<#ARCHIVE field='restrictions_apply'>">
+
+                <div id="statusLine"><#STATUS></div>
+
+                <div>
+                    <div class="h6">
+                        <#ARCHIVE field="repo_name"> | <#ARCHIVE field="collection_title"> | <#ARCHIVE field="title">
+                    </div>
+                </div>
+
+                <h2>Request Details</h2>
+
+                <section name="collection-info">
+                    <div class="h5 <#ARCHIVE display='CheckHasValue' field='collection_title' disabledValue='d-none'>">
+                        <#ARCHIVE field="collection_title">
+                    </div>
+                    <div class="h6 <#ARCHIVE display='CheckHasValue' field='collection_id' disabledValue='d-none'>">
+                        <#ARCHIVE field="collection_id">
+                    </div>
+                    <div class="h6 <#ARCHIVE display='CheckHasValue' field='title' disabledValue='d-none'>">
+                        Requesting From: <#ARCHIVE field="title">
+                    </div>
+                    <div class="h6 <#ARCHIVE display='CheckHasValue' field='accessrestrict' disabledValue='d-none'>">
+                        Restrictions: <#ARCHIVE field="accessrestrict">
+                    </div>
+                </section>
+
+				<div class="row">
+					<div class="col-lg-7">
+						<h3 class="header-special" id="container-checkboxes">Containers</h3>
+					</div>
+			
+                    <div class="col-lg-5 text-right">
+                        <button type="button" class="selectOptions btn btn-link checkAll" data-form="ArchivalRequest" aria-label="Select all of the displayed containers." role="button" >Select All</button>
+                        <button type="button" class="selectOptions btn btn-link checkNone" data-form="ArchivalRequest" aria-label="Select none of the displayed containers." role="button" >Select None</button>
+                    </div>
+                </div>
+
+                <section name="container-info">
+                    <div class="form-group">
+                        Requests are submitted by container; any additional container information (such as folder or item information) will be submitted along with your request.
+                    </div>
+
+                    <div role="group" aria-labelledby="container-checkboxes">
+                        <#DATAREPEATER name="ArchivalRequestContainers" TemplateFile="templates/DataRow_ArchivalRequestContainer.html" noDataAction="No top containers found.">
+                    </div>
+                </section>
+
+                <h3 class="header-special">Request Information</h3>
+                <section name="request-info">
+
+                    <div class="form-group col-md-8">
+                        <label for="Notes">
+                            <span class="<#ERROR name='ERRORNotes'>">
+                                My Notes
+                            </span>
+                        </label>
+                        <textarea class="form-control" name="Notes" id="Notes" rows="2" cols="40" aria-describedby="notesNotes"><#PARAM name="Notes"></textarea>
+                        <div class="small-notes" id="notesNotes">
+                            Please include any additional information that might help us locate the specific items requested, as well as other pertinent information.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-8">
+                        <label for="SpecialRequest">
+                            <span class="<#ERROR name='ERRORSpecialRequest'>">
+                                Special Requests/Questions?
+                            </span>
+                        </label>
+                        <textarea class="form-control" name="SpecialRequest" id="SpecialRequest" rows="2" cols="40" aria-describedby="specialRequestNotes"><#PARAM name="SpecialRequest"></textarea>
+                        <div class="small-notes" id="specialRequestNotes">Please enter any special requests or questions for library staff.</div>
+                    </div>
+
+                    <div class="form-group col-md-8">
+                        <label for="ResearcherTags">
+                            Researcher Tags
+                        </label>
+                        <input type="text" class="form-control" name="ResearcherTags" id="ResearcherTags" value="<#PARAM name='ResearcherTags'>" aria-describedby="researcherTagNotes">
+                        <div class="small-notes" id="researcherTagNotes">Enter a comma-separated list of the tags you want associated with this request.</div>
+                    </div>
+                </section>
+                
+                
+                <#PHOTOTOGGLE>
+            </form>
+        </main>
+		<#INCLUDE filename="include_footer.html">
+    </div>
+</body>
+
+</html>

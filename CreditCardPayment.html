@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>TASCR - Approve Billing</title>
+    <#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+    <#INCLUDE filename="include_header.html">
+    <#INCLUDE filename="include_nav.html">
+	<div class="container">
+     <main id="content" aria-label="Content">
+		<div class="row">							
+			<div class="col-lg-9">
+				<h2 class="h3 py-0">Payment Details</h2>
+				<div id="status"><#STATUS></div>
+				<div id="orderEstimates">						
+					<#DATAREPEATER name="CreditCardPayment" TemplateFile="templates/DataRow_CreditCardOrder.html" noDataAction="You have no orders to pay for" orderby="t.TransactionNumber DESC">
+				</div>
+			</div>
+			<div class="col-lg-3">				
+				<h2 class="h3 py-0">
+					<span class="text-muted">Summary</span>						
+				</h2>
+
+				<div class="list-group-item d-flex justify-content-between">
+					<span>Charges</span>
+					<strong>$<span id="summaryTotalCharges">0.00</span></strong>
+				</div>
+
+				<script type="text/javascript">
+					$(document).ready (function(){
+					var total = 0;
+
+					$('[data-totalCharge]').each(function() {		
+					total += Number($(this).attr('data-totalCharge'));
+					});
+
+					$('#summaryTotalCharges').text(total.toFixed(2));		
+						
+					$('#payOrder').prop('disabled', (total.toFixed(2) <= 0));
+					})
+				</script>
+				<#INCLUDE filename="templates/payment/include_payment_form_none.html">
+			</div>
+		</div>
+	  </main>
+	</div>
+    <#INCLUDE filename="include_footer.html">
+
+</body>
+</html>

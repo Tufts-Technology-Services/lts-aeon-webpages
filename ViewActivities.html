@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>TASCR - Activities</title>
+    <#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+   
+    <#INCLUDE filename="include_header.html">
+
+    <#INCLUDE filename="include_menu.html">
+	<div class="container">
+     <main id="content" aria-label="Content">    
+        <h2>Activities</h2>
+		<#DATAREPEATER name="ViewActivities" TemplateFile="templates/DataRow_DefaultActivity.html" orderby="BeginDate, EndDate" noDataAction="You have no activities">	            
+	  </main>
+    </div>
+	    <#INCLUDE filename="include_footer.html">
+</body>
+</html>

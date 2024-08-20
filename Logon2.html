@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Pragma" content="no-cache">
+	<title>TASCR Logon 2</title>
+	<#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+
+    <#INCLUDE filename="include_header.html">
+		<div id="colorBlock"></div>
+
+	<div class="container">
+	  <main id="content" aria-label="Content">
+		<div id="status" class="container"><#STATUS></div>
+
+		<div class="section">
+			<div class="col col-tufts">
+				<form action="<#DLL>" method="post" name="Logon">
+					<input type="hidden" name="AeonForm" value="Logon">
+					<#FORMSTATE>
+					<div class="logonform tufts">
+						<div class=" info">
+							<!--<p style="color: red; font-weight: bold;">We are currently experiencing issues with the TASCR Tufts Logon.  We are actively working on the issue.  We apologize for any inconvenience.</p>-->
+							<span class="first-line">Tufts University faculty, students, staff, and affiliates with an active Tufts University username and password.</span>
+						</div>
+
+						<span class="tufts-legend">Tufts Logon</span>
+						<div class="logon-field form-group col-md-8-logon">
+							<label for="username">
+								Tufts username
+							</label>
+							<input type="text" class="form-control" name="username" id="username" value="">
+						</div>
+
+						<div class="logon-field form-group last-form-group col-md-8-logon">
+							<label for="password">
+								Tufts password
+							</label>
+							<input type="password" class="form-control" name="password" id="password" autocomplete="off">
+						</div>
+						<div class="forgot-password-link">
+							<a href="https://tuftstools.tufts.edu">
+							<span aria-hidden="true" class="fas fa-question-circle"></span>  Forgot Password?</a>
+						</div>
+
+						<button class="btn btn-primary btn-md btn-logon" type="submit" name="SubmitButton" value="Sign In">Sign In</button>
+						<div class="info">
+							<p class="tufts-first-time">First-time users will be directed to a registration form to create a research account.</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		
+			<div class="col col-tufts">
+				<form action="<#DLL>" method="post" name="Logon">
+					<input type="hidden" name="AeonForm" value="Logon">
+					<#FORMSTATE>
+					<div class="logonform nontufts">
+						<div class=" info">
+							<span class="first-line">All users who do not hold an active Tufts University username and password.</span>
+						</div>
+
+						<span class="non-tufts-legend">Non-Tufts Researchers Logon</span>
+						<div class="logon-field form-group col-md-8-logon">
+							<label for="username">
+								Username
+							</label>
+							<input type="text" class="form-control" name="username" id="username" value="">
+						</div>
+
+						<div class="logon-field last-form-group col-md-8-logon">
+							<label for="password">
+								Password
+							</label>
+							<input type="password" class="form-control" name="password" id="password" autocomplete="off">
+						</div>
+						
+						<div class="forgot-password-link">
+
+							<a href="aeon.dll?Action=10&amp;Form=84">
+							<span aria-hidden="true" class="fas fa-question-circle"></span>  Forgot Password?</a>
+
+						</div>
+						
+
+						<button class="btn btn-primary btn-md btn-logon" type="submit" name="SubmitButton" value="Sign In">Sign In</button>
+						
+						<div class="first-time-link">
+							<a href="aeon.dll?Action=10&amp;Form=79"><span aria-hidden="true" class="fas fa-user-plus"></span>  First Time Users</a>
+						</div>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- Permanently hidden
+        <div class="forgot-password-link">
+            <a href="aeon.dll?Action=10&amp;Form=84">
+                <span aria-hidden="true" class="fas fa-question-circle"></span>  Forgot Password?
+            </a>
+        </div>
+
+        <div class="first-time-link">
+            <a href="aeon.dll?Action=10&amp;Form=79">
+                <span aria-hidden="true" class="fas fa-user-plus"></span>  First Time Users
+            </a>
+        </div>
+		
+		<div class="section">
+			<p class="assistance-text">For assistance with registration, please contact <a href="mailto:archives@tufts.edu">archives@tufts.edu</a>.</p>
+		</div>
+		-->
+		
+	  </main>
+    </div>
+	
+		<#INCLUDE filename="include_footer.html">
+
+
+</body>
+
+</html>

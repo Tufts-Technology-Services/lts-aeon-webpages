@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<title>TASCR - Orders to Submit</title>
+	<#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+
+	<#INCLUDE filename="include_header.html">
+
+	<#INCLUDE filename="include_menu.html">
+	<div class="container">
+	  <main id="content" aria-label="Content">
+		<p class="text-muted">Most photoduplication orders do not incur a fee. <a href="https://tarc.tufts.edu/research/request-scans">Visit our website</a> to learn more about fee scales for photoduplication order.
+		</p>
+		<form action="aeon.dll" method="post" name="ViewOrderEstimates">
+			<input type="hidden" name="AeonForm" value="ViewOrderEstimates">
+			<div class="row">
+
+				<div class="col-lg-9">
+					<div class="row">
+						<div class="col-lg-7">
+							<h2 class="header-special">Orders to Submit</h2>
+						</div>
+						<div class="col-lg-5 text-right">
+							<button type="button" class="selectOptions btn btn-link checkAll" data-form="orderEstimates" aria-label="Select all of the displayed requests." role="button">Select All</button>
+							<button type="button" class="selectOptions btn btn-link checkNone" data-form="orderEstimates" aria-label="Unselect all of the displayed requests." role="button">Select None</button>
+						</div>
+					</div>
+					
+					<div id="orderEstimates">
+						<#DATAREPEATER name="ViewOrderEstimates" TemplateFile="templates/DataRow_OrderEstimate.html" noDataAction="You have no orders to submit" orderby="TransactionNumber DESC">
+					</div>
+				</div>
+
+				<div class="col-lg-3">
+					<h2 class="header-special">
+						<span>Summary</span>
+						<span class="badge badge-primary badge-pill">
+							<span id="selectedOrdersToSubmit">0</span>
+						</span>
+					</h2>
+					
+					<!--
+					<div class="list-group-item d-flex justify-content-between">
+						<span>Estimated Charges</span>
+						<strong>$
+							<span id="summaryTotalCharges">0.00</span>
+						</strong>
+					</div>
+					-->
+					<button id="placeOrder" disabled type="submit" class="btn btn-primary btn-block" name="SubmitButton" value="Submit Information">Place Order</button>
+				</div>
+
+			</div>
+		</form>
+	  </main>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('input[type="checkbox"][name="TransactionSelect"]').change(function () {
+				UpdateCharges();
+			});
+			$('button.checkAll').click(function (event) {
+				event.preventDefault();
+				
+				$('#' + $(this).attr('data-form') + ' input:checkbox').prop('checked', true);
+				UpdateCharges();
+	});
+			$('button.checkNone').click(function (event) {
+				event.preventDefault();
+				
+				$('#' + $(this).attr('data-form') + ' input:checkbox').prop('checked', false);
+				UpdateCharges();
+	});
+
+		});
+		function UpdateCharges() {
+			var selectedRequests = $('input[type="Checkbox"][name="TransactionSelect"]:checked').length;
+			$('#selectedOrdersToSubmit').text(selectedRequests);
+			var total = 0;
+			$('input[type="Checkbox"][name="TransactionSelect"]:checked').each(function () {
+				total += Number($(this).attr('data-totalCharge'));
+			});
+			$('#summaryTotalCharges').text(total.toFixed(2));
+			$('#placeOrder').prop('disabled', (selectedRequests == 0));
+		}
+	</script>
+		    <#INCLUDE filename="include_footer.html">
+</body>
+
+</html>

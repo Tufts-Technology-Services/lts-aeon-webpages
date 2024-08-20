@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>TASCR Main Menu</title>
+    <#INCLUDE filename="include_head.html">
+
+    <link href="<#ACTION action='2' type='40' value='RSSID' valueType='lookup' absolutePath='true' includeSessionID='false'>" rel='alternate' type='application/rss+xml' title='Aeon Alerts'>
+</head>
+
+<body>
+
+        <#INCLUDE filename="include_header.html">
+  
+    <#INCLUDE filename="include_menu.html">
+	<div class="container">
+    <main id="content" aria-label="Content">
+		<p>Welcome to TASCR! The Tufts Archival Research Center welcomes all researchers to use the TARC Reading Room. Your personal research account allows you 
+				to request materials directly through the <a href="https://dl.tufts.edu">Digital Library</a> and our finding aids via <a href="https://archives.tufts.edu">Archives@Tufts</a>, and <a href="http://go.tufts.edu/jumbosearch">JumboSearch</a>, 
+				as well as schedule appointments to visit the Reading Room.
+		<br />
+		<br />
+		Appointments help us organize your visit and prepare requests so they are ready for you when you arrive. They are not required before 11am, but we encourage you to use them to help streamline your work and ours. Please note that some TARC 
+				materials are located in offsite storage, so we recommend you place your requests at least two business days in advance of your planned visit.</p>
+		
+       <!-- <#TAGCLOUD> -->
+        <h2>Outstanding Requests</h2>
+        <#DATAREPEATER name="ViewOutstandingRequests" TemplateFile="templates/DataRow_DefaultRequest.html" noDataAction="You have no outstanding requests" orderby="TransactionNumber DESC">
+		</main>
+    </div>
+	<#INCLUDE filename="include_footer.html">
+
+		<script>
+	// Confirm cancel link
+			$(".cancel_link").click(function() {
+				var conf = confirm('Are you sure you want to cancel this request?\nClick OK to continue with cancellation.');
+				if (conf === true) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			
+	</script>
+	
+</body>
+
+</html>

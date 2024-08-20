@@ -1,0 +1,139 @@
+<#INCLUDE filename="include_appointment_scripts.html">
+
+<div id="appointment-info-div">
+	<div id="SchedulerMessage" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="form-group col-md-5 <#PARAM name='RequestLinksVisible' enabled='RequestForEnabled' disabled='d-none'>">
+        <label for="RequestLink">
+            <span class="<#ERROR name='ERRORRequestLink'>">
+                Request for
+            </span>
+        </label>
+        <select class="custom-select mr-sm-2" id="RequestLink" name="RequestLink" size="1">
+            <#OPTION name="RequestLinks" hideUsernames="true">
+        </select>
+    </div>
+
+	<!-- Hiding site here because it's already on the New Request page
+    <div class="form-group col-md-5 sites-enabled">
+        <label for="Site">
+            <span class="field">
+                <span class="<#ERROR name='ERRORSite'>">Site</span>
+            </span>
+            <select class="custom-select mr-sm-2" id="Site" name="Site" size="1">
+                <#OPTION name="Sites" selectedValue="<#PARAM name='Site'>" defaultName="Choose a Site" defaultValue="">
+            </select>
+        </label>
+    </div>
+	-->
+
+	<!-- Hidden via CSS d-none.  using HTML comments breaks the appointment javascript-->
+    <div class="form-group col-md-5 appointments-enabled d-none">
+        <label for="ReadingRoomID">
+            <span class="<#ERROR name='ERRORReadingRoomID'>">
+                Reading Room
+            </span>
+            <span class="req">(required)</span>
+        </label>
+        <select class="custom-select mr-sm-2" id="ReadingRoomID" name="ReadingRoomID" data-persisted-value="<#PARAM name='ReadingRoomID'>" size="1" required></select>
+    </div>
+
+	
+    <div class="form-group col-md-8 appointments-enabled">
+        <label for="AppointmentID">
+            <span class="<#ERROR name='ERRORAppointmentID'>">
+                Appointment
+            </span>
+			<span id="AppointmentRequired" class="req d-none">(required)</span>
+        </label>
+        <div class="input-group">
+            <select class="custom-select" id="AppointmentID" name="AppointmentID" data-persisted-value="<#PARAM name='AppointmentID'>" size="1" disabled></select>
+            <div class="input-group-append">
+                <button id="NewAppointment" class="btn btn-primary btn-primary-append" type="button" data-toggle="collapse" data-target="#newAppointmentCollapse" aria-expanded="false" aria-controls="newAppointmentCollapse" disabled>
+                    Schedule a New Appointment
+                </button>   
+            </div>
+        </div>
+		<div class="small-notes">Appointments help us organize your visit and prepare requests so they are ready for you when you arrive. They are not required before 11am, but we encourage you to use them to help streamline your work and ours.</div>
+    </div>
+
+    <div class="collapse mb-3" id="newAppointmentCollapse" role="group" aria-labelledby="NewAppointment">
+        <div class="card card-body control-group px-2">
+            <div class="container px-0">
+
+                <div class="row">
+
+                    <div class="col">
+                        <div class="form-group col-md-8">
+                            <label for="AppointmentDate">
+                                <span class="<#ERROR name='ERRORAppointmentDate'>">
+                                    Appointment Date
+                                </span>
+                                <span class="req">(required)</span>
+                            </label>
+                            <div class="input-group">
+                                <input class="form-control" id="AppointmentDate" name="AppointmentDate" aria-describedby="calendarNote" aria-required="true" type="text" value="<#PARAM name='AppointmentDate'>" disabled>
+                            </div>
+                            <span id="calendarNote" class="sr-only">A calendar is available below.</span>
+                        </div>
+                        <div id="datePickerContainer" class="form-group col-md-8"></div>
+                    </div>
+        
+                    <div class="col">
+        
+                        <div class="form-group col-md-8">
+                            <label for="AppointmentLength">
+                                <span class="field">
+                                    <span class="<#ERROR name='ERRORAppointmentLength'>">Length of Appointment</span>
+                                </span>
+                                <span class="req">(required)</span>
+                            </label>
+                            <select class="custom-select mr-sm-2" id="AppointmentLength" name="AppointmentLength" aria-required="true" size="1" disabled>
+                            </select>
+							<div class="small-notes">Make your best estimate. You do not need to use the full amount of time and may add more time within operating hours if needed.</div>
+                        </div>
+        
+                        <div class="form-group col-md-8">
+                            <label for="AppointmentTime">
+                                <span class="field">
+                                    <span class="<#ERROR name='ERRORAppointmentTime'>">Appointment Time</span>
+                                </span>
+                                <span class="req">(required)</span>
+                            </label>
+                            <select class="custom-select mr-sm-2" id="AppointmentTime" name="AppointmentTime" aria-required="true" size="1" disabled>
+                            </select>
+                        </div>
+        
+                        <div class="form-group col-md-8">
+                            <label for="Name">
+                                <span class="<#ERROR name='ERRORName'>">
+                                    Appointment Title
+                                </span>
+                            </label>
+                            <input type="text" class="form-control" name="Name" id="Name" value="<#PARAM name='Name'>">
+							<div class="small-notes">Visible to staff.</div>
+                        </div>
+
+						<!-- Hidden using CSS d-none instead of through HTML comments -->
+                        <div class="form-check ml-3 d-none">
+                            <label class="form-check-label <#ERROR name='ERRORAvailableToProxies'>" for="AvailableToProxies">
+                                <input class="form-check-input" type="checkbox" id="AvailableToProxies" name="AvailableToProxies" value="true">Available to Proxies?
+                            </label>
+                        </div>
+						
+
+                        <div class="form-group col-md-8">
+                            <button class="btn btn-primary btn-md" type="button" id="CreateAppointmentButton" name="CreateButton" value="Create Appointment">Create Appointment</button>
+							<button class="btn btn-secondary btn-md collapse-control-expand expanded" data-toggle="collapse" data-target="#newAppointmentCollapse" aria-expanded="false" aria-controls="newAppointmentCollapse" type="button" role="button" id="buttonCancel">Cancel</button>
+
+                        </div>
+
+                        <div id="SchedulerError" class="col-md-8" role="alert"></div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

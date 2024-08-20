@@ -1,0 +1,99 @@
+<!--
+ Note: Unlike other Aeon web pages, on this page the input elements must have a name of "FormDataField" and 
+       an ID matching the relevant Aeon field name.
+-->
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>TASCR - EAD Requests</title>
+    <#INCLUDE filename="include_head.html">
+    <#INCLUDE filename="include_head_request.html">
+    <script type="text/javascript" src="js/EADRequest.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Initialize the EAD Submission form
+            InitializeSubmissionForm();
+
+            //Add the onclick handler to the submit request button
+			//Only validate if the button is not a Save button or Cancel button
+            $(':submit').click(function (event) { 
+				if ((this.id === 'buttonSaveRequest' || this.id === 'buttonCancel') || $(this).closest("form").get(0).reportValidity()) {
+					SubmitEADForm(this, event); 
+				} 
+				return false; 
+				});
+        });
+    </script>
+</head>
+
+<body>
+    <#INCLUDE filename="include_header.html">
+    <#INCLUDE filename="include_nav.html">
+	<div class="container">
+      <main id="content" aria-label="Content">
+        <!--
+                Commented out original form declaration. New method requires javascript, but can handle large EADs
+                <form action="aeon.dll" method="post" name="EADRequest" >
+                -->
+        <form action="" name="EADRequest_Original">
+            <input type="hidden" ID="AeonForm" name="FormDataField" value="EADRequest">
+            <input type="hidden" ID="DocumentType" name="FormDataField" value="Manuscript">
+
+            <h2>Finding Aid Requests</h2>
+                <div id="statusLine">
+                    <#STATUS>
+                </div>
+            <span class="note">Click on headings below to display/hide corresponding information.</span>
+
+            <section name="ead-request">
+                <#PARAM name="EADRequests">
+            </section>
+
+                <section name="user-info">
+                    <span>
+                        <h3 class="section-header">Common Request Information</h3>
+                        <div class="common-note">Note: The notes will be used for all of the submitted requests.</div>
+                    </span>
+
+                    <div class="form-group col-md-8">
+                        <label for="Notes">
+                            <span class="<#ERROR name='ERRORNotes'>">
+                                My Notes
+                            </span>
+                        </label>
+                        <textarea class="form-control" name="FormDataField" id="Notes" rows="2" cols="40" aria-describedby="notesNotes"><#PARAM name="Notes"></textarea>
+                        <div class="small-notes" id="notesNotes">
+                            Please include any additional information that might help us locate the specific items requested, as well as other pertinent information.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-8">
+                        <label for="SpecialRequest">
+                            <span class="<#ERROR name='ERRORSpecialRequest'>">
+                                Special Requests/Questions?
+                            </span>
+                        </label>
+                        <textarea class="form-control" name="FormDataField" id="SpecialRequest" rows="2" cols="40" aria-describedby="specialRequestNotes"><#PARAM name="SpecialRequest"></textarea>
+                        <div class="small-notes" id="specialRequestNotes">Please enter any special requests or questions for library staff.</div>
+                    </div>
+
+                    <div class="form-group col-md-8">
+                        <label for="ResearcherTags">
+                            Researcher Tags
+                        </label>
+                        <input type="text" class="form-control" name="FormDataField" id="ResearcherTags" value="<#PARAM name='ResearcherTags'>" aria-describedby="researcherTagNotes">
+                        <div class="small-notes" id="researcherTagNotes">Enter a comma-separated list of the tags you want associated with this request.</div>
+                    </div>
+
+                    <#INCLUDE filename="include_appointment_info_ead.html">
+
+                </section>
+                <#INCLUDE filename="include_request_buttons.html">
+
+            </form>
+        </main>
+    </div>
+	        <#INCLUDE filename="include_footer.html">
+</body>
+
+</html>

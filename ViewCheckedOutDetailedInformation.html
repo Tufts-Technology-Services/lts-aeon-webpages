@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>TASCR - Transaction
+        <#PARAM name="TransactionNumber">
+    </title>
+    <#INCLUDE filename="include_head.html">
+</head>
+
+<body>
+
+    <#INCLUDE filename="include_header.html">
+    <#INCLUDE filename="include_menu.html">
+	<div class="container">
+      <main id="content" aria-label="Content">
+        <#INCLUDE filename="include_TransactionMenu.html">
+        <#INCLUDE type="DetailedDocTypeInformation">
+
+        <h2 class="h3 header-detailed">Notes</h2>
+        <#DATAREPEATER name="NotesInformation" TemplateFile="templates/DataRow_DefaultNote.html" noDataAction="You have no notes">
+                
+        <h2 class="h3 header-detailed">Tracking</h2>
+        <div class="table">
+            <#TABLE name="TrackingInformation" noDataAction="ShowMessageRow" noDataMessage="You have no tracking information" column="DateTime:Date/Time" column="ChangedTo:Status" column="ChangedBy:Changed By">
+        </div>
+		</main>
+    </div>
+        <#INCLUDE filename="include_footer.html">
+</body>
+
+</html>
