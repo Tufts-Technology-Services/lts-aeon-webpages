@@ -4,92 +4,88 @@
     This file overrides the defaults in aeon.css, which should not be altered.
 */
 
-
-
-h2.appointments {
-	margin-top: 50px;
-	font-size: 26px;
-    padding: 15px 0 0;
+	h2.appointments {
+	  margin-top: 50px;
+	  font-size: 26px;
+      padding: 15px 0 0;
 	}
 
-/*  Blue color: #346094 */
+	/*  Blue color: #346094 */
 
-b, strong {
-    font-weight: bold;
-}
+	b, strong {
+      font-weight: bold;
+	}
 
 	p {
-		color: #000000;
-		margin-bottom: 10px;
-		padding: 0;
+	  color: #000000;
+	  margin-bottom: 10px;
+	  padding: 0;
 	}
 
 	ul {
-		color: #000000;
+	  color: #000000;
 	}
-
 
 	.text-muted {
-		color: #000000!important;
+	  color: #000000!important;
 	}
 	
-/* Header */
+	/* Header */
 
 	.head {
-		padding: 0;
+	  padding: 0;
 	}
 
 	#customLogo {
-		display: block;
-		margin: 0 0 20px 0;
-		text-indent: -9999px;
-		background-image: url(https://tascr.tufts.edu/images/tarc-logo.svg);
-		background-position: left bottom;
-		background-repeat: no-repeat;
-		width: 585px;
-		height: 75.5px; 
+	  display: block;
+	  margin: 0 0 20px 0;
+	  text-indent: -9999px;
+	  background-image: url(https://tascr.tufts.edu/images/tarc-logo.svg);
+	  background-position: left bottom;
+	  background-repeat: no-repeat;
+	  width: 585px;
+	  height: 75.5px; 
 	}
 	
 	.head .container {
-		display: flex;
-		align-items: top;
-		justify-content: space-between;
+	  display: flex;
+	  align-items: top;
+	  justify-content: space-between;
 	}
 
 	.link-menu {
-		display: flex;
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		font-size: 14px;
+	  display: flex;
+	  list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	  font-size: 14px;
 	}
 
 	.link-menu li {
-		margin-left: 10px;
-		position: relative;
+	  margin-left: 10px;
+	  position: relative;
 	}
 
 	.link-menu li:not(:first-child)::before {
-		content: "|";
-		position: absolute;
-		left: -6px;
+	  content: "|";
+	  position: absolute;
+	  left: -6px;
 	}
 
 	#colorBlock {
-		background-color: #346094;
-		height: 30px;
-		padding: 0;
-		margin: 0;
-		text-align: none;
-		width: 100%;
-
+	  background-color: #346094;
+	  height: 30px;
+	  padding: 0;
+	  margin: 0;
+	  text-align: none;
+	  width: 100%;
 	}
 	
 	.container {
-		margin-top: 20px;
+	  margin-top: 20px;
 	}
 
-/* Notices on homepage and internal alert */
+	/* Notices on homepage and internal alert */
 
 	.notice {
 	  color: #000;
@@ -98,7 +94,7 @@ b, strong {
 	}
 
 	.notice span {
-		margin: 5px;
+	  margin: 5px;
 	}
 
 	.hide {
@@ -106,365 +102,355 @@ b, strong {
 	}
 
 	.alerts-bar .container{
-		margin-top: 0;
+	  margin-top: 0;
 	}
 
 	.btn-alert {
-		font-size: 16px;
+	  font-size: 16px;
 	}
 
 
-/* Atlas cookie notification styles are in js/atlasCoookieConsent.js */
+	/* Atlas cookie notification styles are in js/atlasCoookieConsent.js */
 
-/* logon and logon2 */
+	/* logon and logon2 */
 
-.logon-container {
-	margin-bottom: 20px;
-}
-
-.logon-directions {
-	    font-size: 16px;
-}
-
-.col-tufts {
-	width: 34%;
-	flex-basis: 0;
-    flex-grow: 1;
-    max-width: 100%;
-	position: relative;
-    padding-right: 15px;
-    padding-left: 15px;
-	display: block;
-    float: left;
-    margin: 1% 0 1% 10%;
-}
-
-.col-tufts:first-child { margin-left: 0; }
-
-.section {
-	clear: both;
-	padding: 0px;
-	margin-left: 4em;
+	.logon-container {
+	  margin-bottom: 20px;
 	}
 
-.logonform {
-	background: #f6f6f6;
-	-webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.15);
-    -moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.15);
-    box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.15);
-	border: 1px solid #ccc;
-	border-radius: 5px 5px 5px 5px;
-	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
-	padding: 20px;
-	margin: 0 auto 0 auto;
-	width: 355px;
+	.logon-directions {
+	  font-size: 16px;
 	}
 
-.logon-header {
-    font-size: 196%;
-	color: #346094;
-}
-
-.info {
-	width: 100%;
-	margin: 5px auto 20px auto;
-	font-size: 14px;
+	.col-tufts {
+	  width: 34%;
+	  flex-basis: 0;
+	  flex-grow: 1;
+	  max-width: 100%;
+	  position: relative;
+	  padding-right: 15px;
+	  padding-left: 15px;
+	  display: block;
+	  float: left;
+	  margin: 1% 0 1% 10%;
 	}
-	
-.tufts-legend {
-    color: #000;
-	font-size: 22px;
-	padding-left: 30px;
+
+	.col-tufts:first-child { 
+	  margin-left: 0; 
+	}
+
+	.section {
+	  clear: both;
+	  padding: 0px;
+	  margin-left: 4em;
+	}
+
+	.logonform {
+	  background: #f6f6f6;
+	  -webkit-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.15);
+	  -moz-box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.15);
+	  box-shadow: 7px 7px 5px 0px rgba(0,0,0,0.15);
+	  border: 1px solid #ccc;
+	  border-radius: 5px 5px 5px 5px;
+	  -moz-border-radius: 5px 5px 5px 5px;
+	  -webkit-border-radius: 5px 5px 5px 5px;
+	  padding: 20px;
+	  margin: 0 auto 0 auto;
+	  width: 355px;
+	}
+
+	.logon-header {
+	  font-size: 196%;
+	  color: #346094;
+	}
+
+	.info {
+	  width: 100%;
+	  margin: 5px auto 20px auto;
+	  font-size: 14px;
 	}
 	
-.non-tufts-legend {
-    color: #000;
-	font-size: 18px;
-	font-weight: 560;
-	padding-left: 30px;
-	margin-top: 20px;
+	.tufts-legend {
+      color: #000;
+	  font-size: 22px;
+	  padding-left: 30px;
+	}
+	
+	.non-tufts-legend {
+      color: #000;
+	  font-size: 18px;
+	  font-weight: 560;
+	  padding-left: 30px;
+	  margin-top: 20px;
 	}
 	
 	.col-md-8-logon {
-		max-width: 90%;
+	  max-width: 90%;
 	}
 	
-.logon-field{
-    padding: 0 0 0 30px;
-}
-
-.logon-field-forgot{
-    padding: 0;
-}
-
-.btn-logon {
-	margin-left: 30px;
-}
-
-.logonform .last-form-group {
-    margin-bottom: .5rem;
-}
-
-.forgot-password-link {
-    padding: 0 0 0 30px;
-	font-size: 14px;
-	margin-bottom: 14px;
-}
-
-.first-time-link {
-	padding: 0 0 0 30px;
-	font-size: 14px;
-	margin: 10px 0 72px 0;
-}
-
-p.assistance-text {
-	padding-top: 20px;
-}
-
-p.tufts-first-time {
-	margin-top: 13px;
-	font-size: 14px;
-}
-
-/* newauthregistration */
-
-.copyright  {
-	margin-bottom: 20px;
-}
-
-
-/* navbar */
-.main-navbar {
-	    background-color: #346094;
-}
-
-a {
-    color: #0000EE;
-    text-decoration: none;
-}
-
-/*
-a:visited, a:hover {
-	color: #0000EE;
-}
-*/
-
-
-/* Appointments */
-
-#newAppointmentCollapse .container {
-	margin-top: 5px;
-}
-
-/* Transaction Menu */
-
-
-/* Main menu */
-.main-menu-text {
-	margin-bottom: 10px;
-}
-
-/* First time */
-
-.info-block h2 {
-	color: #346094;
-}
-
-/* Accessibility change */
-.small-notes {
-    color: #42474C;
-}
-
-/* NewRequest */
-
-.new-requests-section-header {
-	color: #346094;
-	margin-top: 10px;
-}
-
-
-/* Photoduplication request */
-
-.checkbox {
-    display: inline-flex;
-    cursor: pointer;
-    position: relative;
-}
-
-.checkbox > input {
-    height: 25px;
-    width: 25px;
-	margin-left: 5px;
-	padding-top: 5px;
-}
-
-.switch-request-form {
-	color: #346094; 
-	width: 22%;
-	padding:5px;
-}
-
-/* Change Password */
-
-.password_notice {
-	font-weight: 520;
-	color: #000000;
-	background-color: #f8d7da;
-}
-
-
-/* Buttons */
-
-.btn-primary {
-    background-color: #346094;
-    color: #fff;
-}
-
-.btn-primary:disabled {
-    background-color: #346094;
-}
-
-
-.btn-primary:hover {
-    background-color: #346094;
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-.btn-secondary:hover, .dropdown-item:focus, .dropdown-item:not(.disabled):hover {
-    background-color: #a4a5a5;
-    color: #05171f;
-    text-decoration: underline;
-}
-
-.btn-secondary {
-    /* margin: 5px;  */
-    background: none;
-    color: blue;
-    text-decoration: underline;
-}
-
-.btn-secondary:hover {
-    background-color: #ffffff;
-    color: #cb333b;
-    text-decoration: underline;
-}
-
-.btn-save-request, .btn-download {
-	background-color: #fad692;
-    color: #000000;
-	text-decoration: none;
-	
-}
-
-.btn-save-request:disabled, .btn-download:disabled {
-    background-color: #fad692;
-}
-
-
-.btn-save-request:hover, .btn-download:hover {
-    background-color: #fad692;
-    color: #000000;
-    text-decoration: underline;
-}
-
-
-/* Change the bold/non-bold on the main menu */
-
-.field-text-muted {
-    color: #000000!important;
-	font-weight: 300!important;
-}
-
-/* ActivityInformation.html */
-
-.activity-information {
-	margin-bottom: 30px;
-}
-
-
-
-/* footer */
-
-.foot {
-	clear: both;
-	background-color: #333;
-	color: #fff;
-	display: block;
-  height: 310px;
-  margin-top: 3.5rem;
-}
-
-
-.foot .footer-content {
-    clear: left;
-    max-width: 1200px;
-    margin: 20px auto 0 auto;
-    width: 100%;
-}
-
-.foot .footer-logo {
-    float: left;
-    width: 14.2857%;
-    margin-left: 2%;
-    margin-right: -14.2857%;
-}
-
-.tufts-logo {
-	width: 203.5px;
-	height: 78.45;
-}
-
-.foot .footer-address{
-    float: left;
-    width: 28.5714%;
-    margin-left: 36.2857%;
-    margin-right: -42.8571%;
-}
-
-.foot h3 {
-	font-size: 16px;
-  color: #fefefe;;
-  }
-
-.foot .footer-address p {
-	color: #fefefe;
-	padding: 10px 0;
-}
-
-.foot .footer-links {
-    float: left;
-    width: 14.2857%;
-    margin-left: 46.8571%;
-    margin-right: -18.1429%;
-}
-
-.foot ul {
-  margin: 0 0 1.5em 0;
-  padding: 0;
-    list-style-type: none;
-
-}
-
-
-.foot ul li a {
-  margin-left: 0px;
-  padding: 0;
-
-}
-
-.foot a:link {
-  color: #fefefe;
-}
-
-.foot a:hover {
-	text-decoration: underline;
-}
+	.logon-field{
+	  padding: 0 0 0 30px;
+	}
+
+	.logon-field-forgot{
+	  padding: 0;
+	}
+
+	.btn-logon {
+	  margin-left: 30px;
+	}
+
+	.logonform .last-form-group {
+	  margin-bottom: .5rem;
+	}
+
+	.forgot-password-link {
+	  padding: 0 0 0 30px;
+	  font-size: 14px;
+	  margin-bottom: 14px;
+	}
+
+	.first-time-link {
+	  padding: 0 0 0 30px;
+	  font-size: 14px;
+	  margin: 10px 0 72px 0;
+	}
+
+	p.assistance-text {
+	  padding-top: 20px;
+	}
+
+	p.tufts-first-time {
+	  margin-top: 13px;
+	  font-size: 14px;
+	}
+
+	/* newauthregistration */
+
+	.copyright  {
+	  margin-bottom: 20px;
+	}
+
+	/* navbar */
+	.main-navbar {
+	  background-color: #346094;
+	}
+
+	a {
+	  color: #0000EE;
+	  text-decoration: none;
+	}
+
+	/*
+	a:visited, a:hover {
+	  color: #0000EE;
+	}
+	*/
+
+	/* Appointments */
+
+	#newAppointmentCollapse .container {
+	  margin-top: 5px;
+	}
+
+	/* Transaction Menu */
+
+	/* Main menu */
+	.main-menu-text {
+	  margin-bottom: 10px;
+	}
+
+	/* First time */
+
+	.info-block h2 {
+	  color: #346094;
+	}
+
+	/* Accessibility change */
+	.small-notes {
+	  color: #42474C;
+	}
+
+	/* NewRequest */
+
+	.new-requests-section-header {
+	  color: #346094;
+	  margin-top: 10px;
+	}
+
+	/* Photoduplication request */
+
+	.checkbox {
+	  display: inline-flex;
+	  cursor: pointer;
+	  position: relative;
+	}
+
+	.checkbox > input {
+	  height: 25px;
+	  width: 25px;
+	  margin-left: 5px;
+	  padding-top: 5px;
+	}
+
+	.switch-request-form {
+	  color: #346094; 
+	  width: 22%;
+	  padding:5px;
+	}
+
+	/* Change Password */
+
+	.password_notice {
+	  font-weight: 520;
+	  color: #000000;
+	  background-color: #f8d7da;
+	}
+
+
+	/* Buttons */
+
+	.btn-primary {
+	  background-color: #346094;
+	  color: #fff;
+	}
+
+	.btn-primary:disabled {
+	  background-color: #346094;
+	}
+
+	.btn-primary:hover {
+	  background-color: #346094;
+	  color: #ffffff;
+	  text-decoration: underline;
+	}
+
+	.btn-secondary:hover, .dropdown-item:focus, .dropdown-item:not(.disabled):hover {
+	  background-color: #a4a5a5;
+	  color: #05171f;
+	  text-decoration: underline;
+	}
+
+	.btn-secondary {
+	  /* margin: 5px;  */
+	  background: none;
+	  color: blue;
+	  text-decoration: underline;
+	}
+
+	.btn-secondary:hover {
+	  background-color: #ffffff;
+	  color: #cb333b;
+	  text-decoration: underline;
+	}
+
+	.btn-save-request, .btn-download {
+	  background-color: #fad692;
+	  color: #000000;
+	  text-decoration: none;
+	}
+
+	.btn-save-request:disabled, .btn-download:disabled {
+	  background-color: #fad692;
+	}
+
+
+	.btn-save-request:hover, .btn-download:hover {
+	  background-color: #fad692;
+	  color: #000000;
+	  text-decoration: underline;
+	}
+
+	/* Change the bold/non-bold on the main menu */
+
+	.field-text-muted {
+	  color: #000000!important;
+	  font-weight: 300!important;
+	}
+
+	/* ActivityInformation.html */
+
+	.activity-information {
+	  margin-bottom: 30px;
+	}
+
+	/* footer */
+
+	.foot {
+	  clear: both;
+	  background-color: #333;
+	  color: #fff;
+	  display: block;
+	  height: 310px;
+	  margin-top: 3.5rem;
+	}
+
+
+	.foot .footer-content {
+	  clear: left;
+	  max-width: 1200px;
+	  margin: 20px auto 0 auto;
+	  width: 100%;
+	}
+
+	.foot .footer-logo {
+	  float: left;
+	  width: 14.2857%;
+	  margin-left: 2%;
+	  margin-right: -14.2857%;
+	}
+
+	.tufts-logo {
+	  width: 203.5px;
+	  height: 78.45;
+	}
+
+	.foot .footer-address{
+	  float: left;
+	  width: 28.5714%;
+	  margin-left: 36.2857%;
+	  margin-right: -42.8571%;
+	}
+
+	.foot h3 {
+	  font-size: 16px;
+	  color: #fefefe;;
+	}
+
+	.foot .footer-address p {
+	  color: #fefefe;
+	  padding: 10px 0;
+	}
+
+	.foot .footer-links {
+	  float: left;
+	  width: 14.2857%;
+	  margin-left: 46.8571%;
+	  margin-right: -18.1429%;
+	}
+
+	.foot ul {
+	  margin: 0 0 1.5em 0;
+	  padding: 0;
+	  list-style-type: none;
+	}
+
+	.foot ul li a {
+	  margin-left: 0px;
+	  padding: 0;
+	}
+
+	.foot a:link {
+	  color: #fefefe;
+	}
+
+	.foot a:hover {
+	  text-decoration: underline;
+	}
 
 	/* Search */
 	.tufts-radio input {
-		margin-left: 0 !important;
+	  margin-left: 0 !important;
 	}
 
 /*
@@ -483,251 +469,245 @@ a:visited, a:hover {
 */
 
 
-@media screen and (max-width: 36em)  {  /* 576 */
+	@media screen and (max-width: 36em)  {  /* 576 */
 
-	#customLogo {
+	  #customLogo {
 		margin: 0;
 		width: 280px;
 		height: 55.84px;
 		background-image: url(https://tascr.tufts.edu/images/tarc-logo-stacked-mobile.svg);
-	}
+	  }
 	
-	.head .container {
+	  .head .container {
 		display: block;
-	}
+	  }
 
-	.link-menu {
+	  .link-menu {
 		margin: 10px 0;
-	}
+	  }
 	
-		#colorBlock {
+	  #colorBlock {
 		height: 12px;
 		margin-top: 10px;
-
-	}
+	  }
 	
-	/* Logon screens */
+	  /* Logon screens */
 	
-	.container {
+	  .container {
 		margin-top: 20px;
-	}
+	  }
 
-	.col-tufts {
+	  .col-tufts {
 		margin: 0;
 		padding: 0;
 		float: none;
-	}
+	  }
 
-
-	.section {
+	  .section {
 		padding: 0px;
 		margin-left: 0;
-	}
+	  }
 	
-	.col-md-8-logon {
+	  .col-md-8-logon {
 		max-width: 90%;
-	}
+	  }
 
-	.logonform {
+	  .logonform {
 		padding: 5px;
 		margin: 5px 5px 16px 5px;
 		width: 320px;
 		box-shadow: none;
-	}
+	  }
 
-	.form-control {
+	  .form-control {
 		width: 88%;
-	}
+	  }
 	
-	.logon-directions, .tufts-legend, .non-tufts-legend, .logon-field, .forgot-password-link, .first-time-link {
+	  .logon-directions, .tufts-legend, .non-tufts-legend, .logon-field, .forgot-password-link, .first-time-link {
 		padding: 5px;
-	}
+	  }
 
-	.btn-logon {
+	  .btn-logon {
 		margin-left: 5px;
-	}
+	  }
 
+	  /* footer */
 	
-	/* footer */
-	
-	.foot {
-	display: block;
-	 height: 500px;
-	 margin-top: 2rem;
-	}
+	  .foot {
+	    display: block;
+	    height: 500px;
+	    margin-top: 2rem;
+	  }
 
-	.foot .footer-content {
+	  .foot .footer-content {
 		max-width: 624px;
-	}
+	  }
 
-	.foot .footer-logo {
+	  .foot .footer-logo {
 		float: left;
-	}
+	  }
 
-	.foot .footer-address{
+	  .foot .footer-address{
 		clear: both;
 		width: 100%;
 		margin: 20px 0 5px 20px;
-	}
+	  }
 
-	.foot .footer-links {
+	  .foot .footer-links {
 		clear: both;
 		width: 100%;
 		margin: 20px 0 5px 20px;
-	}
+	  }
 	
-		/* Switch form button */
-	.switch-request-form {
+	  /* Switch form button */
+	  .switch-request-form {
 		width: 62%;
 		font-size: 14px;
-	}
+	  }
 	
-	/* Saved requests */
+	  /* Saved requests */
 		.card-title {
 		padding-top: 24px;
-	}
+	  }
 
-	/* Appointments */
-	#AppointmentID {
+	  /* Appointments */
+	  #AppointmentID {
 		width: 100%;
 		margin-bottom: 5px;
-	}
+	  }
 	
-	/* Search */
-	.tufts-radio input {
+	 /* Search */
+	  .tufts-radio input {
 		margin-left: 0 !important;
-	}
+	  }
 	
-}
-
-@media screen and (min-width: 36.063em) and (max-width: 36.938em) { /* 577 - 591 */
-	
-	.link-menu {
-		margin: 10px 20px 0 0;
 	}
 
-}
+	@media screen and (min-width: 36.063em) and (max-width: 36.938em) { /* 577 - 591 */
+		
+	  .link-menu {
+	    margin: 10px 20px 0 0;
+	  }
 
-@media screen and (min-width: 37em) and (max-width: 48em) { /* 592 - 768 */
+	}
 
-	#customLogo {
+	@media screen and (min-width: 37em) and (max-width: 48em) { /* 592 - 768 */
+
+	  #customLogo {
 		width: 285px;
 		height: 60.84px;
 		background-image: url(https://tascr.tufts.edu/images/tarc-logo-stacked-mobile.svg);
-	}
+	  }
 
-
-	.link-menu {
+	  .link-menu {
 		margin: 10px 20px 0 0;
-	}
+	  }
 
 
-	.col-tufts {
+	  .col-tufts {
 		width: 100%;
 		display: block;
 		margin: .5% auto .5% auto;
-	}
+	  }
 
-	.section {
+	  .section {
 		padding: 0px;
-	}
+	  }
 
-	.col-md-8-logon {
+	  .col-md-8-logon {
 		max-width: 100%;
-	}
+	  }
 	
-	.logonform {
+	  .logonform {
 		margin: 20px  auto 20px auto;
 		width: 320px;
 		box-shadow: none;
-	}
+	  }
 
-	.logon-header {
+	  .logon-header {
 		font-size: 196%;
 		color: #346094;
-	}
+	  }
 
-	.info {
-		width: 100%;
+	  .info {
+	    width: 100%;
 		margin: 5px auto 20px auto;
 		font-size: 14px;
-	}
+	  }
 	
-	.tufts-legend {
+	  .tufts-legend {
 		color: #000;
 		font-size: 22px;
 		padding-left: 5px;
-	}
+	  }
 	
-	.non-tufts-legend {
+	  .non-tufts-legend {
 		color: #000;
 		font-size: 18px;
 		font-weight: 560;
 		padding-left: 5px;
 		margin-top: 20px;
-	}
+	  }
 	
-	.form-control {
+	  .form-control {
 		width: 88%;
-	}
+	  }
 	
-	.logon-field{
+	  .logon-field{
 		padding: 0 0 0 5px;
-	}
+	  }
 
-	.logon-field-forgot{
+	  .logon-field-forgot{
 		padding: 0;
-	}
+	  }
 
-	.btn-logon {
+	  .btn-logon {
 		margin-left: 6px;
-	}
+	  }
 
-	.logonform .last-form-group {
+	  .logonform .last-form-group {
 		margin-bottom: .5rem;
-	}
+	  }
 
-	.forgot-password-link {
+	  .forgot-password-link {
 		padding: 0 0 0 5px;
 		font-size: 14px;
 		margin-bottom: 14px;
-	}
+	  }
 
-	.first-time-link {
+	  .first-time-link {
 		padding: 0 0 0 5px;
 		font-size: 14px;
 		margin: 20px 0 72px 0;
-	}
+	  }
 	
-	/* Switch form button */
-	#SwitchToCopy {
+	  /* Switch form button */
+	  #SwitchToCopy {
 		width: 36%;
-	}
+	  }
 	
-	/* Saved requests */
-		.card-title {
+	  /* Saved requests */
+	  .card-title {
 		padding-top: 24px;
-	}
-}
+	  }
+    }
 
-@media screen and (min-width: 49em ) and (max-width: 62em) {  /* 784 - 992 */
+    @media screen and (min-width: 49em ) and (max-width: 62em) {  /* 784 - 992 */
 
-	.head .container {
+	  .head .container {
 		display: block;
-	}
+	  }
 
-	.link-menu {
+	  .link-menu {
 		margin: 10px 0;
-	}
+	  }
 
-	
-
-	.section {
+	  .section {
 		clear: both;
 		margin: 0 auto;
-	}
+	  }
 
-	.col-tufts {
+	  .col-tufts {
 		width: 44%;
 		max-width: 100%;
 		position: relative;
@@ -736,91 +716,84 @@ a:visited, a:hover {
 		display: block;
 		float: left;
 		margin: .5% 0 .5% 9%;
-	}
+	  }
 
-
-	.logonform {
+	  .logonform {
 		margin: 0 auto 0 auto;
 		width: 332px;
-	}
+	  }
 	
-	.tufts-legend {
+	  .tufts-legend {
 		padding-left: 20px;
-	}
+	  }
 	
-	.non-tufts-legend {
+	  .non-tufts-legend {
 		padding-left: 20px;
 		margin-top: 20px;
-	}
+	  }
 	
-	.col-md-8-logon {
+	  .col-md-8-logon {
 		max-width: 90%;
-	}
+	  }
 	
-	.form-control {
+	  .form-control {
 		width: 100%;
-	}
+	  }
 	
-.logon-field{
-    padding: 0 0 0 20px;
-}
+	  .logon-field{
+		padding: 0 0 0 20px;
+	  }
 
-.logon-field-forgot{
-    padding: 0;
-}
+	  .logon-field-forgot{
+		padding: 0;
+	  }
 
-.btn-logon {
-	margin-left: 20px;
-}
+	  .btn-logon {
+		margin-left: 20px;
+	  }
 
-.logonform .last-form-group {
-    margin-bottom: .5rem;
-}
+	  .logonform .last-form-group {
+		margin-bottom: .5rem;
+	  }
 
-.forgot-password-link {
-    padding: 0 0 0 20px;
-	font-size: 14px;
-	margin-bottom: 14px;
-}
+	  .forgot-password-link {
+		padding: 0 0 0 20px;
+		font-size: 14px;
+		margin-bottom: 14px;
+	  }
 
-.first-time-link {
-	padding: 0 0 0 20px;
-	font-size: 14px;
-	margin: 10px 0 72px 0;
-}
+	  .first-time-link {
+		padding: 0 0 0 20px;
+		font-size: 14px;
+		margin: 10px 0 72px 0;
+	  }
 
-p.assistance-text {
-	padding-top: 20px;
-}
+	  p.assistance-text {
+		padding-top: 20px;
+	  }
 
-		/* Switch form button */
-	.switch-request-form {
+	  /* Switch form button */
+	  .switch-request-form {
 		width: 30%;
 		font-size: 14px;
-	}
+	  }
 	
-		/* Saved requests */
-		.card-title {
-		padding-top: 24px;
+	  /* Saved requests */
+	  .card-title {
+	    padding-top: 24px;
+	  }
 	}
 
-}
 
+	@media screen and (min-width: 63em ) {  /* 993 and above */
 
-@media screen and (min-width: 63em ) {  /* 993 and above */
-
-	.link-menu {
+	  .link-menu {
 		margin: 10px 20px 0 0;
-	}
+	  }
 	
-		/* Switch form button */
-	.switch-request-form {
+	  /* Switch form button */
+	  .switch-request-form {
 		width: 26%;
 		font-size: 16px;
-	}
-
-
-
-}
-
-
+	  }
+    }
