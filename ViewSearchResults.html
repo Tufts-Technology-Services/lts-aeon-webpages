@@ -1,69 +1,76 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<head>
+  <head>
     <title>TASCR - Search Requests</title>
+	
     <#INCLUDE filename="include_head.html">
+	
     <script type="text/javascript" src="js/search.js"></script>
-		<style>
-	  .container {margin-top: 50px;}
+	
+	<style>
 	  .foot {margin-top: 126px; height: 414px;}
-	  iinput[type=radio] {padding-left: 30px;}
 	  #search {margin-bottom: 30px;}
-	 </style>
-</head>
+	</style>
+	
+  </head>
 
-<body>
+  <body>
 
     <#INCLUDE filename="include_header.html">
     <#INCLUDE filename="include_menu.html">
+	
 	<div class="container">
       <main id="content" aria-label="Content">
         <h2>Search Requests</h2>
     
         <div id="search">
-            <form action="aeon.dll" name="Search" method="post">
-                <input type="hidden" name="AeonForm" value="Search">
-				<div class="form-inline m-0">
-					<input id="SearchCriteria" class="form-control mr-1" value="<#PARAM name='SearchCriteria'>" name="SearchCriteria" type="text" title="Search criteria">
-					<input class="btn btn-primary" type="submit" name="SubmitButton" value="Search" title="Search" data-button-nodisable>
-				</div>
-					<!--Switch control for search filtering-->
-					<!--
-					<div class="custom-control custom-switch" id="customSearchType">
-						<input type="checkbox" name="SearchType"
-						 class="custom-control-input"
-						 id="SearchType" value="Active" 
-						 data-persisted-value="<#PARAM name='SearchType'>">
-						<label class="custom-control-label" for="SearchType">
-						 Search <strong>only</strong> active requests</label>
-					</div>
-					-->
+          <form action="aeon.dll" name="Search" method="post">
+            <input type="hidden" name="AeonForm" value="Search">
+			<div class="form-inline m-0">
+			  <input id="SearchCriteria" class="form-control mr-1" value="<#PARAM name='SearchCriteria'>" name="SearchCriteria" type="text" title="Search criteria">
+			  <input class="btn btn-primary" type="submit" name="SubmitButton" value="Search" title="Search" data-button-nodisable>
+			</div>
+			<!--Switch control for search filtering-->
+			<!--
+			<div class="custom-control custom-switch" id="customSearchType">
+			  <input type="checkbox" name="SearchType"
+			    class="custom-control-input"
+			    id="SearchType" value="Active" 
+			    data-persisted-value="<#PARAM name='SearchType'>">
+			  <label class="custom-control-label" for="SearchType">
+			    Search <strong>only</strong> active requests</label>
+			</div>
+			-->
 
-					<!--Radio control for search filtering-->
-					
-     
-                <div id="searchType">
-					<input checked name="SearchType" type="radio" id="SearchTypeActive" value="Active">
-					<label for="SearchTypeActive">
-						<span>Search <u>only</u> active requests</span>
-					</label>
-					<input class="ml-3" name="SearchType" type="radio" id="SearchTypeAll" value="All">
-					<label for="SearchTypeAll">Search all requests</label>
-                </div>
-            </form>
-        </div>
+			<!--Radio control for search filtering-->
 
-        <div id="searchResults">
-            <#DATAREPEATER name="ViewSearchResults" TemplateFile="templates/DataRow_DefaultRequest.html"  orderby="TransactionNumber DESC">
-           
-            <div id="no-results-message" style="display: none;">
-                There are no search results for
-                <span id="searchTerm"><strong><#PARAM name="searchCriteria"></strong></span>
-            </div>
-        </div>
-		</main>
-    </div>
-	        <#INCLUDE filename="include_footer.html">
-</body>
+			<div id="searchType">
+			  <input checked name="SearchType" type="radio" id="SearchTypeActive" value="Active">
+			  <label for="SearchTypeActive">
+			    <span>Search <u>only</u> active requests</span>
+			  </label>
+			  <!-- added div here for styling -->
+			  <div class="tufts-radio">
+			    <input class="ml-3" name="SearchType" type="radio" id="SearchTypeAll" value="All">
+			    <label for="SearchTypeAll">Search all requests</label>
+			  </div>
+			</div>
+		  </form>
+		</div>
+
+	    <div id="searchResults">
+		  <#DATAREPEATER name="ViewSearchResults" TemplateFile="templates/DataRow_DefaultRequest.html"  orderby="TransactionNumber DESC">
+
+		  <div id="no-results-message" style="display: none;">
+		    There are no search results for
+			<span id="searchTerm"><strong><#PARAM name="searchCriteria"></strong></span>
+		  </div>
+		</div>
+	  </main>
+	</div>
+	
+<#INCLUDE filename="include_footer.html">
+
+  </body>
 </html>

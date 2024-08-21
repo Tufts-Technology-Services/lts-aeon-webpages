@@ -462,6 +462,11 @@ a:visited, a:hover {
 	text-decoration: underline;
 }
 
+	/* Search */
+	.tufts-radio input {
+		margin-left: 0 !important;
+	}
+
 /*
 @include media-breakpoint-up(xs) { min-width less than 576/36em }
 @include media-breakpoint-up(sm) { min-width 576/36em }
@@ -586,6 +591,11 @@ a:visited, a:hover {
 	#AppointmentID {
 		width: 100%;
 		margin-bottom: 5px;
+	}
+	
+	/* Search */
+	.tufts-radio input {
+		margin-left: 0 !important;
 	}
 	
 }
