@@ -227,8 +227,12 @@
 
 	/* newauthregistration */
 
-	.copyright  {
-	  margin-bottom: 20px;
+	.mtop-30 {
+	  margin-top: 30px;
+	}
+	
+	.mbottom-30 {
+	  margin-bottom: 30px !important;
 	}
 
 	/* navbar */
