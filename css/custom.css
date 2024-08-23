@@ -319,7 +319,7 @@
 	  color: #fff;
 	}
 
-	.btn-primary:disabled {
+	.btn-primary:disabled, .btn-primary.disabled {
 	  background-color: #346094;
 	}
 
