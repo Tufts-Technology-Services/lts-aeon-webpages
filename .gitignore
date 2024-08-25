@@ -13,3 +13,5 @@ testweb/
 # Random files
 thumbs.db
 *.tufts
+# Aeon Update directory
+AeonUpdates/
