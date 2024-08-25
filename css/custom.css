@@ -456,6 +456,11 @@
 	.tufts-radio input {
 	  margin-left: 0 !important;
 	}
+	
+	/* View Appointments */
+	#SchedulerError {
+		color: #b81f18;
+	}
 
 /*
 @include media-breakpoint-up(xs) { min-width less than 576/36em }
