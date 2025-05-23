@@ -53,22 +53,58 @@ window.addEventListener('load', function () {
             "nodrag":1
         });
 
-        // Create date picker
-        datePickerController.createDatePicker({
-            formElements:{"ScheduledDate":"%m/%d/%Y"},
-            noTodayButton: "true",
-            positioned: "datePickerButton",
-            finalOpacity: 100,
-            disabledDays: disabledDays,
-            rangeLow: rangeLow
+        // Create a mutation observer that watches for changes to the disabled attribute in the ScheduledDate input,
+        // and creates/destroys datepickers when the inputs are enabled/disabled
+        var observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (mutation.attributeName === "disabled") {
+                var dpInputId = mutation.target.id;
+                if (dpInputId !== "ScheduledDate"){
+                    return;
+                }
+                if (!mutation.target[mutation.attributeName]) {
+                    datePickerController.createDatePicker({
+                        formElements:{"ScheduledDate":"%m/%d/%Y"},
+                        noTodayButton: "true",
+                        positioned: "datePickerButton",
+                        finalOpacity: 100,
+                        disabledDays: disabledDays,
+                        rangeLow: rangeLow
+                    });
+                    datePickerController.setDisabledDates("ScheduledDate", disabledDates);
+                    if (maxDays) { 
+                        datePickerController.setRangeHigh("ScheduledDate", rangeHigh);
+                    }
+                }
+                else {
+                    datePickerController.destroyDatePicker("ScheduledDate");
+                }
+              }
+            });
         });
-        datePickerController.setDisabledDates("ScheduledDate", disabledDates);
-        if (maxDays) { 
-            datePickerController.setRangeHigh("ScheduledDate", rangeHigh);
+        
+        // If the ScheduledDate input is not disabled, create a date picker.
+        // Observe the input for changes to its disabled state
+        observer.observe($("#ScheduledDate")[0], {
+            attributes: true
+        });
+    
+        if (!$("#ScheduledDate")[0].disabled) {
+            datePickerController.createDatePicker({
+                formElements:{"ScheduledDate":"%m/%d/%Y"},
+                noTodayButton: "true",
+                positioned: "datePickerButton",
+                finalOpacity: 100,
+                disabledDays: disabledDays,
+                rangeLow: rangeLow
+            });
+            datePickerController.setDisabledDates("ScheduledDate", disabledDates);
+            if (maxDays) { 
+                datePickerController.setRangeHigh("ScheduledDate", rangeHigh);
+            }
         }
-
-        this.document.getElementById("datePickerButton").addEventListener("click", function(){datePickerController.show('ScheduledDate', true);})
-       
+        
+        this.document.getElementById("datePickerButton").addEventListener("click", function(){datePickerController.show('ScheduledDate', true);});
         this.document.getElementById("ScheduledDate").addEventListener("change", function(){ ValidateDate(); })
 
         function ValidateDate() {

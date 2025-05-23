@@ -1,8 +1,13 @@
 var RequestLinkPhoto = "#RequestLink";
 var rlPhoto = document.getElementById("RequestLinkPhoto");
-if (typeof(rlPhoto) != 'undefined' && rlPhoto != null)
-{
+if (typeof(rlPhoto) != 'undefined' && rlPhoto != null) {
     RequestLinkPhoto = "#RequestLinkPhoto";
+} else if (document.querySelector(RequestLinkPhoto) == null) {
+	if (document.querySelector("[data-ead-name='RequestLink']") != null) {
+		RequestLinkPhoto = "[data-ead-name='RequestLink']";
+	} else {
+		RequestLinkPhoto = "[name='RequestLink']";
+	}
 }
 
 //// Sets the options for the billing accounts SELECT element.

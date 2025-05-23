@@ -7,7 +7,7 @@ var readingRoom = null;
 
 var OnAppointmentEditForm = false;
 var OnViewAppointmentsPage = false;
-var RequestLinkAppt = "RequestLink";
+var RequestLinkAppt = "#RequestLink";
 
 window.addEventListener('load', async function() {
     document.getElementById("ReadingRoomID").innerHTML = "";
@@ -15,9 +15,14 @@ window.addEventListener('load', async function() {
     document.getElementById("Name").value = null;
 
     var rlAppt = document.getElementById("RequestLinkAppt");
-    if (typeof(rlAppt) != 'undefined' && rlAppt != null)
-    {
-        RequestLinkAppt = "RequestLinkAppt";
+    if (typeof(rlAppt) != 'undefined' && rlAppt != null) {
+        RequestLinkAppt = "#RequestLinkAppt";
+    } else if (document.querySelector(RequestLinkAppt) == null) {
+        if (document.querySelector("[data-ead-name='RequestLink']") != null) {
+            RequestLinkAppt = "[data-ead-name='RequestLink']";
+        } else {
+            RequestLinkAppt = "[name='RequestLink']";
+        }
     }
 
     // This code can run in several places: On request forms, on the Edit Appointment form, and on the ViewAppointments page.
@@ -82,13 +87,13 @@ window.addEventListener('load', async function() {
         GetReadingRooms();
     } else {
 
-        document.getElementById(RequestLinkAppt).onchange = async function() { 
+        document.querySelector(RequestLinkAppt).onchange = async function() { 
             await GetAppointments().then(() =>
             {
                 GetReadingRooms();
             }); 
         };
-        if (document.getElementById(RequestLinkAppt).value == "") {
+        if (document.querySelector(RequestLinkAppt).value == "") {
             if (!OnViewAppointmentsPage) {
                 document.getElementById("AppointmentID").innerHTML = "";
             }
@@ -114,10 +119,47 @@ window.addEventListener('load', async function() {
 
         GetReadingRooms();
     }
+
+    if(!OnAppointmentEditForm) {
+        if (document.getElementById("CancelAppointmentCreateButton") != null) {
+            // When clicking the cancel button, put focus back onto the toggle button and clear relevant form inputs
+            document.getElementById("CancelAppointmentCreateButton").addEventListener('click', function() {
+                var toggleButton = document.querySelector("button#ScheduleNewAppointment");
+                if (toggleButton == null) {
+                    toggleButton = document.querySelector("button#NewAppointment");
+                }
+                if (toggleButton != null) {
+                    toggleButton.focus();
+                }
+
+                if (OnViewAppointmentsPage) {
+                    for(let option of document.querySelector(RequestLinkAppt).options) {
+                        if (option.defaultSelected) {
+                            document.querySelector(RequestLinkAppt).value = option.value;
+                        }
+                    }
+
+                    if (document.getElementById("Site").tagName.toLowerCase() == "select") {
+                        document.getElementById("Site").selectedIndex = 0;
+                    }
+
+                    document.getElementById("AppointmentDate").value = "";
+                    document.getElementById("Name").value = "";
+                    document.getElementById("AvailableToProxies").checked = false;
+                }
+                else {
+                    document.getElementById("AppointmentDate").value = "";
+                    document.getElementById("Name").value = "";
+                    document.getElementById("AvailableToProxies").checked = false;
+
+                }
+            });
+        }
+    }
 });
 
 function GetResearcherUsername(){
-    var rl = document.getElementById(RequestLinkAppt);
+    var rl = document.querySelector(RequestLinkAppt);
     if (rl && rl.value) {
         return rl.value.slice(2)
     }
@@ -625,8 +667,8 @@ function GetAvailabilityForTime(datetime) {
 async function GetAppointments() {
 
     let requestLink = null;
-    if ($("#" + RequestLinkAppt).length > 0) {
-        requestLink = $("#" + RequestLinkAppt).val();
+    if ($(RequestLinkAppt).length > 0) {
+        requestLink = $(RequestLinkAppt).val();
 
         // Disable and hide Appointment select/create if RequestLink is an Activity.
         if (requestLink[0] == 'E') {
@@ -759,7 +801,7 @@ function PopulateAppointments(appointments) {
 
 function CreateAppointment() {
 
-    if (document.getElementById(RequestLinkAppt).value == 'E') {
+    if (document.querySelector(RequestLinkAppt).value == 'E') {
         ShowError("Cannot create an appointment for an activity.");
         return;
     }
@@ -770,7 +812,7 @@ function CreateAppointment() {
         ReadingRoomID: document.getElementById("ReadingRoomID").value,
         AvailableToProxies: document.getElementById("AvailableToProxies").checked == true,
         Name: document.getElementById("Name").value,
-        ResearcherUsername: document.getElementById(RequestLinkAppt).value.slice(2)
+        ResearcherUsername: document.querySelector(RequestLinkAppt).value.slice(2)
     }
 
     let [valid, message] = ValidateAppointment(appointment);

@@ -30,21 +30,32 @@ function setVisibility(groups) {
             el.hide();
         }
 
-        var RequestLinkPhoto = "RequestLink";
+
+
+        var RequestLinkPhoto = "#RequestLink";
         var rlPhoto = document.getElementById("RequestLinkPhoto");
-        if (typeof(rlPhoto) != 'undefined' && rlPhoto != null)
-        {
-            RequestLinkPhoto = "RequestLinkPhoto";
+        if (typeof(rlPhoto) != 'undefined' && rlPhoto != null) {
+            RequestLinkPhoto = "#RequestLinkPhoto";
+        } else if (document.querySelector(RequestLinkPhoto) == null) {
+            if (document.querySelector("[data-ead-name='RequestLink']") != null) {
+                RequestLinkPhoto = "[data-ead-name='RequestLink']";
+            } else {
+                RequestLinkPhoto = "[name='RequestLink']";
+            }
         }
 
-        var requestLink = document.getElementById(RequestLinkPhoto);
+        var requestLink = document.querySelector(RequestLinkPhoto);
 		var requestLinkHasValue = requestLink != null && requestLink.value != '';
 
         el.find('*').addBack().filter('input,textarea,button,select').each(function(i, e) {
             if (!requestLinkHasValue && (e.id === 'Format' || e.id === 'ShippingOption' || e.id === 'ServiceLevel')){
                 $(e).prop('disabled', true);
-            } else {
-                $(e).prop('disabled', !enabled);
+            } else if (enabled && $(e).attr('data-disable-check') != undefined) {
+                $(e).removeAttr('data-disable-check');
+                $(e).prop('disabled', false);
+            } else if (!enabled && $(e).prop('disabled') == false) {
+                $(e).attr('data-disable-check', 'true');
+                $(e).prop('disabled', true);
             }
         });
     })

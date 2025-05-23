@@ -1,21 +1,46 @@
 var RequestLinkPhoto = "#RequestLink";
 var rlPhoto = document.getElementById("RequestLinkPhoto");
-if (typeof(rlPhoto) != 'undefined' && rlPhoto != null)
-{
+if (typeof(rlPhoto) != 'undefined' && rlPhoto != null) {
 	RequestLinkPhoto = "#RequestLinkPhoto";
+} else if (document.querySelector(RequestLinkPhoto) == null) {
+	if (document.querySelector("[data-ead-name='RequestLink']") != null) {
+		RequestLinkPhoto = "[data-ead-name='RequestLink']";
+	} else {
+		RequestLinkPhoto = "[name='RequestLink']";
+	}
 }
 
 //// Populates the options for the billing context SELECT elements of the photoduplication request forms.
 function UpdateBillingDropdowns() {
     if (typeof _formatOptions != 'undefined') {
         UpdateBillingDropdown($("#Format"), _formatOptions);
-    }
+    } else {
+		var format = $("#Format");
+		if (format.length) {
+			checkSelectPosition(format);
+			format.prop("disabled", !($(RequestLinkPhoto).length && $(RequestLinkPhoto).val() != '' && format.get(0).offsetParent != null));
+		}
+	}
+
     if (typeof _shippingoptionOptions != 'undefined') {
         UpdateBillingDropdown($("#ShippingOption"), _shippingoptionOptions);
-    }
+    } else {
+		var shippingOption = $("#ShippingOption");
+		if (shippingOption.length) {
+			checkSelectPosition(shippingOption);
+			shippingOption.prop("disabled", !($(RequestLinkPhoto).length && $(RequestLinkPhoto).val() != '' && shippingOption.get(0).offsetParent != null));
+		}
+	}
+
     if (typeof _servicelevelOptions != 'undefined') {
         UpdateBillingDropdown($("#ServiceLevel"), _servicelevelOptions);
-    }
+    } else {
+		var serviceLevel = $("#ServiceLevel");
+		if (serviceLevel.length) {
+			checkSelectPosition(serviceLevel);
+			serviceLevel.prop("disabled", !($(RequestLinkPhoto).length && $(RequestLinkPhoto).val() != '' && serviceLevel.get(0).offsetParent != null));
+		}
+	}
 }
 
 //// Sets the options for a given SELECT element representing the choices for a specific billing context from the given options provided in contextOptionsArray.
@@ -39,12 +64,9 @@ function UpdateBillingDropdown(selectElement, contextOptionsArray) {
 	//Remove any existing options from the SELECT element
 	selectElement.children("option").remove();
 
-	if(getComputedStyle(selectElement.get(0)).position === "fixed"){
-		console.log("The " + selectElement.get(0).id + " SELECT element has a fixed position and its visibility may not be accurately determined by billingContextOptionHandler.js");
-	}
+	checkSelectPosition(selectElement);
 	
 	selectElement.prop("disabled", !(billingCategory != null && selectElement.get(0).offsetParent != null));
-	
 	
 	if (billingCategory == null) {
 		return;
@@ -59,6 +81,14 @@ function UpdateBillingDropdown(selectElement, contextOptionsArray) {
 				.prop("selected", selectedOptionValue === contextOptionsArray[billingCategory][i]) 
 			);
 		}
+	}
+}
+
+//// Determines if the position property of the SELECT element might cause the visibility check to fail. 
+//// Failure might occur if position is set to "fixed", such as by CSS styling. We log a warning in the browser console if this is the case.
+function checkSelectPosition(selectElement) {
+	if(getComputedStyle(selectElement.get(0)).position === "fixed"){
+		console.log("The " + selectElement.get(0).id + " SELECT element has a fixed position and its visibility may not be accurately determined by billingContextOptionHandler.js");
 	}
 }
 

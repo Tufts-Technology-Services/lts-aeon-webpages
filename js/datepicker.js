@@ -37,6 +37,9 @@ var observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === "disabled") {
         var dpInputId = mutation.target.id;
+        if (dpInputId === "ScheduledDate"){
+            return;
+        }
         var dpButtonId = $(document.getElementById(dpInputId)).next()[0].id;
         if (!mutation.target[mutation.attributeName]) {
             var formElements = {};
@@ -61,16 +64,19 @@ var observer = new MutationObserver((mutations) => {
 // If the input is not disabled, create a date picker.
 // Observe the input for changes to its disabled state
 $('*[id*=datePickerButton]').each((i,el) => {
+    var dpInputId = $(el).prev()[0].id;
+    if (dpInputId === "ScheduledDate") {
+        return;
+    }
     observer.observe($(el).prev()[0], {
         attributes: true
     });
 
-    if (!el.disabled) {
+    if (!$(el).prev()[0].disabled) {
         // Only create date picker if it hasn't already been created.
         if (el.childElementCount == 0)
         {
             var dpButtonId = el.id;
-            var dpInputId = $(el).prev()[0].id;
             var formElements = {};
             formElements[dpInputId] = "%m/%d/%Y";
             datePickerController.createDatePicker({

@@ -112,7 +112,13 @@ function AppendFormDataFields() {
             newElement.checked = sourceElement.checked;
         }
 
-        newElement.name = sourceElement.id;
+        if (sourceElement.hasAttribute("data-ead-name")) {
+            newElement.name = sourceElement.getAttribute("data-ead-name");
+        }
+        else {
+            newElement.name = sourceElement.id;
+        }
+
         newElement.id = sourceElement.id;
         newElement.value = sourceElement.value;
 
