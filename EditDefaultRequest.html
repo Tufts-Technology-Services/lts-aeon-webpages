@@ -14,16 +14,17 @@
 	<div class="container">
       <main id="content" aria-label="Content">
         <form action="aeon.dll" method="post" name="EditDefaultRequest">
-            <input type="hidden" name="AeonForm" value="EditDefaultRequest">
-            <input type="hidden" name="SessionID" value="<#PARAM name='SessionID'>">
-            <input type="hidden" name="TransactionNumber" value="<#PARAM name='TransactionNumber'>">
-            <input type="hidden" name="ReferenceNumber" value="<#PARAM name='ReferenceNumber'>">
-            <input type="hidden" name="ItemNumber" value="<#PARAM name='ItemNumber'>">
-            <input type="hidden" name="ItemInfo4" value="<#PARAM name='ItemInfo4'>">
-            <input type="hidden" name="RequestType" value="Loan">
-			<input type="hidden" name="FormValidationOverride" value="DefaultRequest">
-			<input type="hidden" name="Transaction.CustomFields.Container" value="<#PARAM name='Transaction.CustomFields.Container'>">
-			<input type="hidden" name="Transaction.CustomFields.StorageLocation" value="<#PARAM name='Transaction.CustomFields.StorageLocation'>">
+          <input type="hidden" name="AeonForm" value="EditDefaultRequest">
+          <input type="hidden" name="SessionID" value="<#PARAM name='SessionID'>">
+          <input type="hidden" name="TransactionNumber" value="<#PARAM name='TransactionNumber'>">
+          <input type="hidden" name="ReferenceNumber" value="<#PARAM name='ReferenceNumber'>">
+          <input type="hidden" name="ItemNumber" value="<#PARAM name='ItemNumber'>">
+          <input type="hidden" name="ItemInfo4" value="<#PARAM name='ItemInfo4'>">
+          <input type="hidden" name="RequestType" value="Loan">
+	      <input type="hidden" name="FormValidationOverride" value="DefaultRequest">
+	      <input type="hidden" name="Transaction.CustomFields.Container" value="<#PARAM name='Transaction.CustomFields.Container'>">
+	      <input type="hidden" name="Transaction.CustomFields.StorageLocation" value="<#PARAM name='Transaction.CustomFields.StorageLocation'>">
+		  <input type="hidden" name="Transaction.CustomFields.Folder" value="<#PARAM name='Transaction.CustomFields.Folder'>">
 
             <h2>Edit Request</h2>
             <div id="status"><#STATUS></div>
