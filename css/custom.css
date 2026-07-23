@@ -88,9 +88,19 @@
 	/* Notices on homepage and internal alert */
 
 	.notice {
+	  display: block;
 	  color: #000;
-	  background-color: #FCC7BB;
+	  background: #FCC7BB;
 	  border-bottom: 0px;
+	  padding: 20px;
+	  margin-bottom: 10px;
+	}
+	
+	.notice-header {
+		display: block;
+		font-size: 18px;
+		font-weight: bold;
+		margin-bottom: 3px;
 	}
 
 	.notice span {
